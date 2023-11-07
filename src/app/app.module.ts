@@ -20,10 +20,20 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { MainComponent } from './layout/main/main.component';
+import { HelpComponent } from './components/help/help.component';
+import { ImprintComponent } from './components/imprint/imprint.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { SidenavSummaryComponent } from './pages/sidenav-summary/sidenav-summary.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MainComponent,
+    HelpComponent,
+    ImprintComponent,
+    ProfileComponent,
+    SidenavSummaryComponent
   ],
   imports: [
     BrowserModule,
