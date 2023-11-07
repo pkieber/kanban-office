@@ -25,6 +25,10 @@ import { HelpComponent } from './components/help/help.component';
 import { ImprintComponent } from './components/imprint/imprint.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SidenavSummaryComponent } from './pages/sidenav-summary/sidenav-summary.component';
+import { SidenavBoardComponent } from './pages/sidenav-board/sidenav-board.component';
+import { SidenavAddtaskComponent } from './pages/sidenav-addtask/sidenav-addtask.component';
+import { SidenavContactsComponent } from './pages/sidenav-contacts/sidenav-contacts.component';
+import { SidenavLegalComponent } from './pages/sidenav-legal/sidenav-legal.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +37,11 @@ import { SidenavSummaryComponent } from './pages/sidenav-summary/sidenav-summary
     HelpComponent,
     ImprintComponent,
     ProfileComponent,
-    SidenavSummaryComponent
+    SidenavSummaryComponent,
+    SidenavBoardComponent,
+    SidenavAddtaskComponent,
+    SidenavContactsComponent,
+    SidenavLegalComponent
   ],
   imports: [
     BrowserModule,
