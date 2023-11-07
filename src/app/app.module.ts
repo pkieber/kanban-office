@@ -19,6 +19,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatCardModule } from '@angular/material/card';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 // Drag-and-drop implementation
 import { DragDropModule } from '@angular/cdk/drag-drop';
@@ -43,6 +44,7 @@ import { SidenavContactsComponent } from './pages/sidenav-contacts/sidenav-conta
 import { SidenavLegalComponent } from './pages/sidenav-legal/sidenav-legal.component';
 import { BoardDialogComponent } from './pages/sidenav-board/board-dialog/board-dialog.component';
 import { BoardTaskComponent } from './pages/sidenav-board/board-task/board-task.component';
+
 
 @NgModule({
   declarations: [
@@ -84,6 +86,7 @@ import { BoardTaskComponent } from './pages/sidenav-board/board-task/board-task.
     MatNativeDateModule,
     MatProgressBarModule,
     MatCardModule,
+    MatSnackBarModule,
     // Drag-and-drop implementation
     DragDropModule,
   ],
