@@ -44,6 +44,8 @@ import { SidenavContactsComponent } from './pages/sidenav-contacts/sidenav-conta
 import { SidenavLegalComponent } from './pages/sidenav-legal/sidenav-legal.component';
 import { BoardDialogComponent } from './pages/sidenav-board/board-dialog/board-dialog.component';
 import { BoardTaskComponent } from './pages/sidenav-board/board-task/board-task.component';
+import { ContactListComponent } from './pages/sidenav-contacts/contact-list/contact-list.component';
+import { ContactCardComponent } from './pages/sidenav-contacts/contact-card/contact-card.component';
 
 
 @NgModule({
@@ -59,7 +61,9 @@ import { BoardTaskComponent } from './pages/sidenav-board/board-task/board-task.
     SidenavContactsComponent,
     SidenavLegalComponent,
     BoardDialogComponent,
-    BoardTaskComponent
+    BoardTaskComponent,
+    ContactListComponent,
+    ContactCardComponent
   ],
   imports: [
     BrowserModule,

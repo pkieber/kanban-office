@@ -56,10 +56,11 @@ app-new-task {
   opacity: 0;
 }
 
-.add-btn {
+.add-btn-round {
   position: absolute;
   right: 32px;
   bottom: 32px;
+  background-color: var(--themeColor);
 
   &:hover {
     filter: brightness(1.25);
