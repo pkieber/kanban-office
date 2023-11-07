@@ -1,1 +1,61 @@
-<p>sidenav-board works!</p>
+<div class="content-wrapper">
+  <button class="add-btn" mat-fab color="primary" (click)="newTask()">
+    <mat-icon>add</mat-icon>
+  </button>
+
+  <!-- cdkDropListData - Input for the drop-down list, which specifies the data array. -->
+  <!-- cdkDropListConnectedTo - Refers to the other cdkDropLists that the current cdkDropList is connected to.-->
+  <div class="container-wrapper">
+    <div class="container">
+      <h2>Backlog</h2>
+
+      <!-- Drag and drop across swimlane "todo"-->
+      <mat-card
+        cdkDropList
+        id="todo"
+        #todoList="cdkDropList"
+        [cdkDropListData]="todo"
+        [cdkDropListConnectedTo]="[doneList, inProgressList]"
+        (cdkDropListDropped)="drop($event)"
+        class="list">
+        <p class="empty-label" *ngIf="todo.length === 0">Empty list</p>
+        <app-board-task (edit)="editTask('todo', $event)" *ngFor="let task of todo" cdkDrag [task]="task"></app-board-task>
+      </mat-card>
+    </div>
+
+    <div class="container">
+      <h2>In progress</h2>
+
+      <!-- Drag and drop across swimlane "in Progress" -->
+      <mat-card
+        cdkDropList
+        id="inProgress"
+        #inProgressList="cdkDropList"
+        [cdkDropListData]="inProgress"
+        [cdkDropListConnectedTo]="[todoList, doneList]"
+        (cdkDropListDropped)="drop($event)"
+        class="list">
+        <p class="empty-label" *ngIf="inProgress.length === 0">Empty list</p>
+        <app-board-task (edit)="editTask('inProgress', $event)" *ngFor="let task of inProgress" cdkDrag [task]="task"></app-board-task>
+      </mat-card>
+    </div>
+
+    <div class="container">
+      <h2>Done</h2>
+
+      <!-- Drag and drop across swimlane "done"-->
+        <mat-card
+          cdkDropList
+          id="done"
+          #doneList="cdkDropList"
+          [cdkDropListData]="done"
+          [cdkDropListConnectedTo]="[todoList, inProgressList]"
+          (cdkDropListDropped)="drop($event)"
+          class="list">
+          <p class="empty-label" *ngIf="done.length === 0">Empty list</p>
+          <app-board-task (edit)="editTask('done', $event)" *ngFor="let task of done" cdkDrag [task]="task"></app-board-task>
+      </mat-card>
+    </div>
+  </div>
+
+</div>

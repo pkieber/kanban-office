@@ -1,0 +1,15 @@
+mat-card {
+  padding: 10px;
+}
+
+.mat-mdc-form-field {
+  margin-inline: 16px;
+  margin-top: 16px;
+}
+
+.del-btn {
+  &:hover {
+    filter: brightness(1.25);
+    cursor: pointer;
+  }
+}

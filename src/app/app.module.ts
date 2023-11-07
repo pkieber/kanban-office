@@ -11,6 +11,18 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatRadioModule } from '@angular/material/radio';
 
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatCardModule } from '@angular/material/card';
+
+// Drag-and-drop implementation
+import { DragDropModule } from '@angular/cdk/drag-drop';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -29,6 +41,8 @@ import { SidenavBoardComponent } from './pages/sidenav-board/sidenav-board.compo
 import { SidenavAddtaskComponent } from './pages/sidenav-addtask/sidenav-addtask.component';
 import { SidenavContactsComponent } from './pages/sidenav-contacts/sidenav-contacts.component';
 import { SidenavLegalComponent } from './pages/sidenav-legal/sidenav-legal.component';
+import { BoardDialogComponent } from './pages/sidenav-board/board-dialog/board-dialog.component';
+import { BoardTaskComponent } from './pages/sidenav-board/board-task/board-task.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +55,9 @@ import { SidenavLegalComponent } from './pages/sidenav-legal/sidenav-legal.compo
     SidenavBoardComponent,
     SidenavAddtaskComponent,
     SidenavContactsComponent,
-    SidenavLegalComponent
+    SidenavLegalComponent,
+    BoardDialogComponent,
+    BoardTaskComponent
   ],
   imports: [
     BrowserModule,
@@ -60,6 +76,16 @@ import { SidenavLegalComponent } from './pages/sidenav-legal/sidenav-legal.compo
     MatMenuModule,
     MatRadioModule,
     FormsModule, ReactiveFormsModule,
+    MatTooltipModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatProgressBarModule,
+    MatCardModule,
+    // Drag-and-drop implementation
+    DragDropModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
