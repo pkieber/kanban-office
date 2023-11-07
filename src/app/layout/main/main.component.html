@@ -1,13 +1,13 @@
 <mat-drawer-container class="mat-drawer-container" autosize>
-  <mat-drawer #drawer class="sidenav" mode="side">
-    <div
-      class="logo-container"
-      [ngClass]="{
-        'option-1-background': selectedOption === '1',
-        'option-2-background': selectedOption === '2',
-        'option-3-background': selectedOption === '3'
-      }"
-    >
+  <mat-drawer
+    #drawer class="sidenav" mode="side"
+    [ngClass]="{
+      'option-1-background': selectedOption === '1',
+      'option-2-background': selectedOption === '2',
+      'option-3-background': selectedOption === '3'
+    }"
+  >
+    <div class="logo-container">
       <img class="logo" src="assets/img/logo.png" routerLink="/">
     </div>
     <ul class="menu-items">
@@ -49,7 +49,7 @@
         <button matTooltip="Toggle sidebar" mat-icon-button (click)="drawer.toggle()" class="mobile-hide">
           <mat-icon>menu</mat-icon>
         </button>
-        <span class="mobile-hide" routerLink="/">KANBAN-APP</span>
+        <span class="mobile-hide" routerLink="/">Kanban Project Management</span>
         <span class="spacer"></span>
         <button [matMenuTriggerFor]="menu" #menuTrigger matTooltip="Open menu" matTooltip="Logout" mat-icon-button class="example-icon">
           <mat-icon>settings</mat-icon>
