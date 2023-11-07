@@ -1,0 +1,9 @@
+{
+  "hosting": [
+    {
+      "target": "office-kanban",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}

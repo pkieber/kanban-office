@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "office-too": {
+      "hosting": {
+        "office-kanban": [
+          "office-too"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "office-too"
+  }
+}
