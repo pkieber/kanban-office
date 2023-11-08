@@ -1,5 +1,9 @@
+<div class="title-container">
+  <h2>Manage Contacts</h2>
+  <button (click)="newContact()" class="add-user-btn" mat-fab color="primary" matTooltip="Add note">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
 <app-contact-list></app-contact-list>
 <app-contact-card></app-contact-card>
-<button class="add-btn-round" mat-fab color="primary" (click)="newContact()">
-  <mat-icon>add</mat-icon>
-</button>
+

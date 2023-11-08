@@ -1,8 +1,11 @@
-<div class="content-wrapper">
-  <button class="add-btn-round" mat-fab color="primary" (click)="newTask()">
+<div class="title-container">
+  <h2>Manage Kanban Board</h2>
+  <button (click)="newTask()" class="add-user-btn" mat-fab color="primary" matTooltip="Add task">
     <mat-icon>add</mat-icon>
   </button>
+</div>
 
+<div class="content-wrapper">
   <!-- cdkDropListData - Input for the drop-down list, which specifies the data array. -->
   <!-- cdkDropListConnectedTo - Refers to the other cdkDropLists that the current cdkDropList is connected to.-->
   <div class="container-wrapper">

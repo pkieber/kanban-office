@@ -1,3 +1,25 @@
+.title-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  height: 70px;
+
+  h2 {
+    margin: 0;
+  }
+}
+
+.add-user-btn {
+  background-color: rgb(255, 255, 255);
+  color: var(--themeColor)!important;
+
+  &:hover {
+    filter: brightness(1.25);
+    cursor: pointer;
+  }
+}
+
 mat-toolbar {
   margin-bottom: 20px;
 }
@@ -9,7 +31,7 @@ mat-toolbar > span {
 .content-wrapper {
   max-width: 1400px;
   margin: auto;
-  padding: 16px;
+  /*padding: 16px;*/
 }
 
 .container-wrapper {

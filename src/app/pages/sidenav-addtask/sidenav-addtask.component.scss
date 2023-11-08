@@ -1,0 +1,21 @@
+.title-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  height: 70px;
+
+  h2 {
+    margin: 0;
+  }
+}
+
+.add-user-btn {
+  background-color: rgb(255, 255, 255);
+  color: var(--themeColor)!important;
+
+  &:hover {
+    filter: brightness(1.25);
+    cursor: pointer;
+  }
+}
