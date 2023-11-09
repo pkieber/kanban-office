@@ -11,6 +11,7 @@ import { ProfileComponent } from 'src/app/components/profile/profile.component';
 })
 export class MainComponent {
   selectedOption: string = '1'; // Change toolbar-color
+  isSidebarOpen = false;
 
   constructor(public dialog: MatDialog) {}
 
