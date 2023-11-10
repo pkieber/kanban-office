@@ -1,3 +1,35 @@
 <div class="list-container">
-  Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio illo eum necessitatibus. Libero dicta, fugiat minima non corporis voluptatibus animi similique est ea quis aliquam deserunt ipsam fuga iure perferendis.
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let data of contactList | async; let id = index' class="contacts-box">
+        <td>
+          <div class="initials-circle" [style.background]="data.color">
+            {{ data.lastName[0] }}{{ data.firstName[0] }}
+          </div>
+        </td>
+        <td>
+          <div class="contacts-info">
+            <span>
+              {{ data.lastName }}, {{ data.firstName }}
+            </span>
+            <span>
+              {{ data.email || 'n/a' }}
+            </span>
+          </div>
+        </td>
+        <!--
+        <td>
+          <button>DELETE</button>
+        </td>
+        -->
+      </tr>
+    </tbody>
+  </table>
 </div>
+
