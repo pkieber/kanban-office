@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ContactDialogComponent } from './contact-dialog/contact-dialog.component';
+import { Contact } from 'src/app/models/contact.class';
 
 @Component({
   selector: 'app-sidenav-contacts',
@@ -6,8 +9,26 @@ import { Component } from '@angular/core';
   styleUrls: ['./sidenav-contacts.component.scss']
 })
 export class SidenavContactsComponent {
+  name!: string;
+  email!: string;
+  showFiller = false;
 
-  newContact() {}
+
+  constructor(public dialog: MatDialog) {}
+
+
+  openDialogContact(): void {
+    const dialogRef = this.dialog.open(ContactDialogComponent, {
+      data: {name: this.name, email: this.email},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.name = result;
+    });
+  }
+
 
 }
+
 

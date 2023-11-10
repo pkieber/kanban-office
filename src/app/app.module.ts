@@ -20,6 +20,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatCardModule } from '@angular/material/card';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTableModule } from '@angular/material/table';
+
 
 // Drag-and-drop implementation
 import { DragDropModule } from '@angular/cdk/drag-drop';
@@ -65,7 +67,7 @@ import { ContactDialogComponent } from './pages/sidenav-contacts/contact-dialog/
     BoardTaskComponent,
     ContactListComponent,
     ContactCardComponent,
-    ContactDialogComponent
+    ContactDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -93,6 +95,7 @@ import { ContactDialogComponent } from './pages/sidenav-contacts/contact-dialog/
     MatProgressBarModule,
     MatCardModule,
     MatSnackBarModule,
+    MatTableModule,
     // Drag-and-drop implementation
     DragDropModule,
   ],
