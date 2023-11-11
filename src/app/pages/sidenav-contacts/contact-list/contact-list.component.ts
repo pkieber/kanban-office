@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Contact } from 'src/app/models/contact.class';
 import { ContactsService } from 'src/app/services/contacts.service';
 
@@ -9,6 +9,9 @@ import { ContactsService } from 'src/app/services/contacts.service';
   styleUrls: ['./contact-list.component.scss']
 })
 export class ContactListComponent implements OnInit {
+  @Input() contactData: any; // Input property to receive contact data
+  @Output() showDetail = new EventEmitter<any>(); // Output event emitter
+
   contactList!: Observable<Array<Contact>>
   lastName!: string;
   firstName!: string;
@@ -16,13 +19,16 @@ export class ContactListComponent implements OnInit {
 
   constructor(private contactService: ContactsService) {}
 
+
   ngOnInit(): void {
     this.loadContacts();
   }
 
+
   loadContacts() {
     this.contactList = this.contactService.getAll();
   }
+
 
   onEdit(lastName: string, firstName: string, contactId: string) {
     this.lastName = lastName;
@@ -30,7 +36,13 @@ export class ContactListComponent implements OnInit {
     this.contactId = contactId;
   }
 
+
   onDelete(contactId: string) {
     this.contactService.delete(contactId);
+  }
+
+
+  showContactDetail(contact: Contact) {
+    this.contactService.setSelectedContact(contact);
   }
 }

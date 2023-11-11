@@ -66,3 +66,24 @@ h4 {
 .mat-body p, .mat-body-2 p, .mat-typography .mat-body p, .mat-typography .mat-body-2 p, .mat-typography p {
   margin: 0 0 0 0!important;
 }
+
+/* Design scrollbar */
+/* For WebKit browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--themeColor);
+  border-radius: 5px;
+}
+
+/* For Firefox */
+* {
+  scrollbar-color: var(--themeColor) #f1f1f1;
+  scrollbar-width: thin;
+}

@@ -43,13 +43,14 @@ mat-toolbar, mat-toolbar-row {
 }
 
 .logo-container {
-  height: 150px;
+  height: 200px;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .logo {
-  max-width: 100%;
+  max-width: 120%;
   height: 100px;
   padding-inline: 26px;
   cursor: pointer;

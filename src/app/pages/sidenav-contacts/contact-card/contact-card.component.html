@@ -1,1 +1,16 @@
-<p>contact-card works!</p>
+<div *ngIf="selectedContact">
+  <div class="contacts-box">
+    <div class="initials-circle" [style.background]="selectedContact.color">
+      {{ selectedContact.lastName[0] }} {{ selectedContact.firstName[0] }}
+    </div>
+    <div>
+      <h3>{{ selectedContact.firstName }} {{ selectedContact.lastName }}</h3>
+      + Add Task
+    </div>
+  </div>
+  <h4>Contact information <button>Edit contact</button></h4>
+  <div>{{ selectedContact.email || "n/a" }}</div>
+  <div>{{ selectedContact.phone || "n/a" }}</div>
+</div>
+
+

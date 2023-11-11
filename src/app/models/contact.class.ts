@@ -3,6 +3,7 @@ export class Contact {
   firstName!: string;
   lastName!: string;
   email!: string;
+  phone!: string;
   division!: string;
   title!: string;
   color: string;
@@ -13,6 +14,7 @@ export class Contact {
     this.firstName = obj ? obj.firstName : '';
     this.lastName = obj ? obj.lastName : '';
     this.email = obj ? obj.email : '';
+    this.phone = obj ? obj.phone : '';
     this.division = obj ? obj.division : '';
     this.title = obj ? obj.title : '';
     this.color = obj ? obj.color : '';
@@ -25,6 +27,7 @@ export class Contact {
       firstName: this.firstName,
       lastName: this.lastName,
       email: this.email,
+      phone: this.phone,
       division: this.division,
       title: this.title,
       color: this.color,
