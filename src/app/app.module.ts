@@ -51,6 +51,7 @@ import { ContactListComponent } from './pages/sidenav-contacts/contact-list/cont
 import { ContactCardComponent } from './pages/sidenav-contacts/contact-card/contact-card.component';
 import { ContactDialogComponent } from './pages/sidenav-contacts/contact-dialog/contact-dialog.component';
 import { AlphabeticalSortPipe } from './alphabetical-sort.pipe';
+import { SearchComponent } from './components/search/search.component';
 
 
 @NgModule({
@@ -71,6 +72,7 @@ import { AlphabeticalSortPipe } from './alphabetical-sort.pipe';
     ContactCardComponent,
     ContactDialogComponent,
     AlphabeticalSortPipe,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,

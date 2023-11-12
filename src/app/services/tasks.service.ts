@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import {
   Firestore,
   collection, addDoc,
-  collectionData,
   doc, updateDoc,
   deleteDoc,
+  collectionData,
 } from '@angular/fire/firestore';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -14,12 +14,17 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class TasksService {
 
-  constructor(private firestore: Firestore, private snackBar: MatSnackBar) {}
+  constructor(
+    private firestore: Firestore,
+    private snackBar: MatSnackBar
+  ) {}
 
-  addTask (data: object) {
+
+  addTask(data: object) {
     const dbInstance = collection(this.firestore, 'tasks');
-    // this.snackBar.open(message, action);
-    return addDoc(dbInstance, data);
+    return addDoc(dbInstance, data)
+      .then(() => this.showSuccess('Task added successfully'))
+      .catch(error => this.showErrorSnackbar('Failed to add task'));
   }
 
 
@@ -31,15 +36,32 @@ export class TasksService {
 
   updateTasks(taskId: string, data: object): Promise<void> {
     const docInstance = doc(this.firestore, 'tasks', taskId);
-    // this.snackBar.open(message, action);
-    return updateDoc(docInstance, data);
+    return updateDoc(docInstance, data)
+      .then(() => this.showSuccess('Task updated successfully'))
+      .catch(error => this.showErrorSnackbar('Failed to update task'));
   }
 
 
   deleteTasks(taskId: string) {
     const docInstance = doc(this.firestore, 'tasks', taskId);
-    // this.snackBar.open(message, action);
-    return deleteDoc(docInstance);
+    return deleteDoc(docInstance)
+      .then(() => this.showSuccess('Task deleted successfully'))
+      .catch(error => this.showErrorSnackbar('Failed to delete task'));
   }
 
+
+  private showSuccess(message: string): void {
+    this.snackBar.open(message, 'OK', {
+      duration: 3000,
+      panelClass: ['success-snackbar']
+    });
+  }
+
+
+  private showErrorSnackbar(message: string): void {
+    this.snackBar.open(message, 'OK', {
+      duration: 3000,
+      panelClass: ['error-snackbar']
+    });
+  }
 }

@@ -22,9 +22,13 @@ export class ContactsService {
   private selectedContactSource = new BehaviorSubject<Contact | null>(null); // TEST
   selectedContact$ = this.selectedContactSource.asObservable(); // TEST
 
-  constructor(private firestore: Firestore, private snackBar: MatSnackBar) {
+  constructor(
+    private firestore: Firestore,
+    private snackBar: MatSnackBar
+  ) {
     this.contactsCollection = collection(this.firestore, 'contacts');
   }
+
 
   /**
    * Gets all contact info.
@@ -36,6 +40,7 @@ export class ContactsService {
     }) as Observable<Contact[]>;
   }
 
+
   /**
    * Gets contact info based on id.
    * @param id
@@ -46,14 +51,18 @@ export class ContactsService {
     return docData(contactDocRef, { idField: 'id' }) as Observable<Contact>;
   }
 
+
   /**
    * Creates new contact.
    * @param contact
    * @returns a new contact to the collection.
    */
   create(contact: Contact) {
-    return addDoc(this.contactsCollection, contact);
+    return addDoc(this.contactsCollection, contact)
+      .then(() => this.showSuccess('Contact added successfully'))
+      .catch(error => this.showErrorSnackbar('Failed to add contact'));
   }
+
 
   /**
    * Updates contact info.
@@ -62,8 +71,11 @@ export class ContactsService {
    */
   update(contact: Contact) {
     const contactDocRef = doc(this.firestore, `contacts/${contact.id}`);
-    return updateDoc(contactDocRef, { ...contact });
+    return updateDoc(contactDocRef, { ...contact })
+      .then(() => this.showSuccess('Contact updated successfully'))
+      .catch(error => this.showErrorSnackbar('Failed to update contact'));
   }
+
 
   /**
    * Deletes selected contact.
@@ -72,11 +84,29 @@ export class ContactsService {
    */
   delete(id: string) {
     const contactDocRef = doc(this.firestore, `contacts/${id}`);
-    return deleteDoc(contactDocRef);
+    return deleteDoc(contactDocRef)
+      .then(() => this.showSuccess('Contact deleted successfully'))
+      .catch(error => this.showErrorSnackbar('Failed to delete contact'));
   }
 
-  // TEST
+
   setSelectedContact(contact: Contact | null) {
     this.selectedContactSource.next(contact);
+  }
+
+
+  private showSuccess(message: string): void {
+    this.snackBar.open(message, 'OK', {
+      duration: 3000,
+      panelClass: ['success-snackbar']
+    });
+  }
+
+
+  private showErrorSnackbar(message: string): void {
+    this.snackBar.open(message, 'OK', {
+      duration: 3000,
+      panelClass: ['error-snackbar']
+    });
   }
 }

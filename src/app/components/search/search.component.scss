@@ -1,0 +1,33 @@
+.search-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.search-field {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+mat-icon {
+  cursor: pointer;
+}
+
+.search-icon {
+  position: absolute;
+  right: 10px;
+  top: 16px;
+  animation: none !important;
+}
+
+.close-icon {
+  position: absolute;
+  right: 10px;
+  top: 16px;
+  animation: none !important;
+}
+
+.mat-mdc-form-field {
+  padding-top: 0px;
+}
