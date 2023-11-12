@@ -21,7 +21,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatCardModule } from '@angular/material/card';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
-
+import { MatGridListModule } from '@angular/material/grid-list';
 
 // Drag-and-drop implementation
 import { DragDropModule } from '@angular/cdk/drag-drop';
@@ -98,6 +98,7 @@ import { AlphabeticalSortPipe } from './alphabetical-sort.pipe';
     MatCardModule,
     MatSnackBarModule,
     MatTableModule,
+    MatGridListModule,
     // Drag-and-drop implementation
     DragDropModule,
   ],
