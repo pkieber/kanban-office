@@ -7,10 +7,9 @@ export class AlphabeticalSortPipe implements PipeTransform {
 
   transform(array: any[] | null): any[] {
     if (!array || array.length <= 1) {
-      return array || []; // return an empty array if the input is null
+      return array || [];
     }
 
-    // Use the Array.sort() method to sort the array alphabetically based on last names
     return array.sort((a, b) => {
       const lastNameA = a.lastName.toUpperCase();
       const lastNameB = b.lastName.toUpperCase();

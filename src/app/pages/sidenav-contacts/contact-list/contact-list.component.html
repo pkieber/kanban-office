@@ -1,17 +1,25 @@
 <div class="list-container">
   <ul>
-    <li *ngFor='let data of contactList | async | alphabeticalSort; let id = index'>
-      <h3 class="alphabet-title">{{ data.lastName[0] }}</h3>
-      <div class="contact-underline"></div>
-      <div class="contacts-box" (click)="showContactDetail(data)">
-        <div class="initials-circle" [style.background]="data.color">
-          {{ data.lastName[0] }} {{ data.firstName[0] }}
-        </div>
-        <div class="contacts-info">
-          <span>{{ data.lastName }}, {{ data.firstName }}</span>
-          <span>{{ data.email || 'n/a' }}</span>
-        </div>
-    </div>
-    </li>
+    <ng-container *ngIf="contactList | async as contacts">
+      <ng-container *ngFor="let data of contacts | alphabeticalSort; let i = index">
+        <ng-container *ngIf="i === 0 || data.lastName[0] !== contacts[i - 1].lastName[0]">
+          <li>
+            <h3 class="alphabet-title">{{ data.lastName[0] }}</h3>
+          </li>
+        </ng-container>
+        <li>
+          <div class="contact-underline"></div>
+          <div class="contacts-box" (click)="showContactDetail(data)">
+            <div class="initials-circle" [style.background]="data.color">
+              {{ data.lastName[0] }} {{ data.firstName[0] }}
+            </div>
+            <div class="contacts-info">
+              <span>{{ data.lastName }}, {{ data.firstName }}</span>
+              <span>{{ data.email || 'n/a' }}</span>
+            </div>
+          </div>
+        </li>
+      </ng-container>
+    </ng-container>
   </ul>
 </div>

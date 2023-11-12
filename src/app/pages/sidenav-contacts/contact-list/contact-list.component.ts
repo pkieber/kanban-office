@@ -46,4 +46,23 @@ export class ContactListComponent implements OnInit {
   showContactDetail(contact: Contact) {
     this.contactService.setSelectedContact(contact);
   }
+
+
+  /**
+   * Avoid duplicate values in alphabet letters.
+   * @param dataList
+   * @returns
+   */
+  getUniqueInitials(dataList: any[]): string[] {
+    const uniqueInitials: string[] = [];
+
+    dataList.forEach((data) => {
+      const initial = data.lastName[0].toUpperCase();
+      if (!uniqueInitials.includes(initial)) {
+        uniqueInitials.push(initial);
+      }
+    });
+
+    return uniqueInitials;
+  }
 }
