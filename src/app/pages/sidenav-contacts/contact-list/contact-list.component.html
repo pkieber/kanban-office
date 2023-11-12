@@ -1,6 +1,6 @@
 <div class="list-container">
   <ul>
-    <li *ngFor='let data of contactList | async; let id = index'>
+    <li *ngFor='let data of contactList | async | alphabeticalSort; let id = index'>
       <h3 class="alphabet-title">{{ data.lastName[0] }}</h3>
       <div class="contact-underline"></div>
       <div class="contacts-box" (click)="showContactDetail(data)">

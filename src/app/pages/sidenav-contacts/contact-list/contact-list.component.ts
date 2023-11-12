@@ -2,6 +2,7 @@ import { Observable } from 'rxjs';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Contact } from 'src/app/models/contact.class';
 import { ContactsService } from 'src/app/services/contacts.service';
+import { AlphabeticalSortPipe } from 'src/app/alphabetical-sort.pipe';
 
 @Component({
   selector: 'app-contact-list',

@@ -49,6 +49,7 @@ import { BoardTaskComponent } from './pages/sidenav-board/board-task/board-task.
 import { ContactListComponent } from './pages/sidenav-contacts/contact-list/contact-list.component';
 import { ContactCardComponent } from './pages/sidenav-contacts/contact-card/contact-card.component';
 import { ContactDialogComponent } from './pages/sidenav-contacts/contact-dialog/contact-dialog.component';
+import { AlphabeticalSortPipe } from './alphabetical-sort.pipe';
 
 
 @NgModule({
@@ -68,6 +69,7 @@ import { ContactDialogComponent } from './pages/sidenav-contacts/contact-dialog/
     ContactListComponent,
     ContactCardComponent,
     ContactDialogComponent,
+    AlphabeticalSortPipe,
   ],
   imports: [
     BrowserModule,
