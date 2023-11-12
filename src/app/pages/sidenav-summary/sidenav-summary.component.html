@@ -5,35 +5,19 @@
     <div class="headline">Everything in a nutshell</div>
   </div>
 
-  <!-- Summary Grid + Greeting -->
-  <main>
-
-    <!---->
-    <section class="left-container">
-      <div class="grid-container">
-        <div class="row1">
-          <div class="info-box1"></div>
-          <div class="info-box1"></div>
-          <div class="info-box1"></div>
-        </div>
-
-        <div class="row2">
-          <div class="info-box3"></div>
-        </div>
-
-        <div class="row3">
-          <div class="info-box2"></div>
-          <div class="info-box2"></div>
-        </div>
-      </div>
-
-    </section>
-    <!---->
-    <section class="right-container">
-
-      test
-
-    </section>
-    <!---->
-  </main>
+  <!-- Summary Grid -->
+  <mat-grid-list [cols]="breakpoint" rowHeight="2:1">
+    <mat-grid-tile>
+      <div class="info-box">HELLO1</div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div class="info-box">HELLO2</div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div class="info-box">HELLO3</div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div class="info-box">HELLO4</div>
+    </mat-grid-tile>
+  </mat-grid-list>
 </div>

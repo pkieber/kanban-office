@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./sidenav-summary.component.scss']
 })
 export class SidenavSummaryComponent {
+  breakpoint: number = 2;
 
 }
