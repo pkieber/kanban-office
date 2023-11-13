@@ -66,10 +66,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "office-kanban:build:production"
+              "buildTarget": "office-kanban:build:production"
             },
             "development": {
-              "browserTarget": "office-kanban:build:development"
+              "buildTarget": "office-kanban:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -77,7 +77,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "office-kanban:build"
+            "buildTarget": "office-kanban:build"
           }
         },
         "test": {
