@@ -127,3 +127,10 @@ mat-toolbar, mat-toolbar-row {
   );
   color: white;
 }
+
+.gradient-title {
+  font-size: 24px;
+  background: -webkit-linear-gradient(#ffffff, rgb(160, 164, 181));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
