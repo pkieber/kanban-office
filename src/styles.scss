@@ -3,7 +3,8 @@
   --themeColor:#2A3647; /* #000c50; */
   --themeColorBlue: #29ABE2;
   --themeColorLight: rgba(190, 190, 190, 0.114);
-  --themeColorWhite: rgb(255, 255, 255);}
+  --themeColorWhite: rgb(255, 255, 255);
+}
 
 html, body {
   height: 100%;
@@ -90,3 +91,5 @@ h4 {
   scrollbar-color: var(--themeColor) #f1f1f1;
   scrollbar-width: thin;
 }
+
+

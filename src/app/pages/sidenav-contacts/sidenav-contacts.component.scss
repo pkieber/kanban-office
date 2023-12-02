@@ -26,6 +26,29 @@
   }
 }
 
+.add-user-btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 20px;
+}
+
+.toggle-btn {
+  position: absolute;
+  right: 0;
+  margin-right: 20px;
+  color: var(--themeColorBlue);
+}
+
 mat-drawer-container {
   height: calc(100vh - 70px); // - Toolbar height
+}
+
+
+/* Mobile view */
+@media(max-width:1000px) {
+
+  .sidenav {
+    width: 100%;
+  }
 }

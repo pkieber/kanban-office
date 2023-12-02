@@ -1,6 +1,6 @@
 <mat-drawer-container class="mat-drawer-container" autosize>
   <!-- Contact-card -->
-  <div class="router-container">
+  <div class="router-container mobile-hide">
     <div class="right-container">
       <div class="title-container">
         <!-- Toggle button + title -->
@@ -10,7 +10,7 @@
             matTooltip="Toggle sidebar"
             mat-icon-button
             (click)="drawer.toggle()"
-            class="mobile-hide"
+            class="mobile-hide toggle-btn"
           >
             <mat-icon class="IconColor" *ngIf="!drawer.opened">arrow_forward_ios</mat-icon>
             <mat-icon class="IconColor" *ngIf="drawer.opened">arrow_back_ios</mat-icon>
@@ -26,13 +26,12 @@
   </div>
   <!-- Contact-list -->
 
-  <mat-drawer #drawer class="sidenav" mode="side">
+  <mat-drawer #drawer class="sidenav" mode="side" opened="true">
     <div class="router-container">
-
-    <div class="left-container">
-      <app-contact-list></app-contact-list>
+      <div class="left-container">
+        <app-contact-list (click)="drawer.toggle()"></app-contact-list>
+      </div>
     </div>
-  </div>
-
   </mat-drawer>
+
 </mat-drawer-container>

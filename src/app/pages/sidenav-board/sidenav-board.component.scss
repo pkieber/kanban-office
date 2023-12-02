@@ -89,3 +89,19 @@ app-new-task {
     cursor: pointer;
   }
 }
+
+
+mat-card {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  background-color: rgba(6, 6, 50, 0.035);
+  border-radius: 10px !important;
+  width: 300px !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.empty-label {
+  font-size: 1.2em !important;
+}
+
