@@ -10,7 +10,7 @@ import {
   CollectionReference,
 } from '@angular/fire/firestore';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Contact } from '../models/contact.class';
+import { ContactClass } from '../models/contact.class';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 
@@ -19,7 +19,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class ContactsService {
   private contactsCollection: CollectionReference<DocumentData>;
-  private selectedContactSource = new BehaviorSubject<Contact | null>(null); // TEST
+  private selectedContactSource = new BehaviorSubject<ContactClass | null>(null); // TEST
   selectedContact$ = this.selectedContactSource.asObservable(); // TEST
 
   constructor(
@@ -37,7 +37,7 @@ export class ContactsService {
   getAll() {
     return collectionData(this.contactsCollection, {
       idField: 'id',
-    }) as Observable<Contact[]>;
+    }) as Observable<ContactClass[]>;
   }
 
 
@@ -48,7 +48,7 @@ export class ContactsService {
    */
   get(id: string) {
     const contactDocRef = doc(this.firestore, 'contacts', id);
-    return docData(contactDocRef, { idField: 'id' }) as Observable<Contact>;
+    return docData(contactDocRef, { idField: 'id' }) as Observable<ContactClass>;
   }
 
 
@@ -57,7 +57,7 @@ export class ContactsService {
    * @param contact
    * @returns a new contact to the collection.
    */
-  create(contact: Contact) {
+  create(contact: ContactClass) {
     return addDoc(this.contactsCollection, contact)
       .then(() => this.showSuccess('Contact added successfully'))
       .catch(error => this.showErrorSnackbar('Failed to add contact'));
@@ -69,7 +69,7 @@ export class ContactsService {
    * @param contact
    * @returns an update to the contact collection.
    */
-  update(contact: Contact) {
+  update(contact: ContactClass) {
     const contactDocRef = doc(this.firestore, `contacts/${contact.id}`);
     return updateDoc(contactDocRef, { ...contact })
       .then(() => this.showSuccess('Contact updated successfully'))
@@ -90,7 +90,7 @@ export class ContactsService {
   }
 
 
-  setSelectedContact(contact: Contact | null) {
+  setSelectedContact(contact: ContactClass | null) {
     this.selectedContactSource.next(contact);
   }
 

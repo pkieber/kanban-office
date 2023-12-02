@@ -1,12 +1,11 @@
-export class Contact {
+export class ContactClass {
   id!: string;
   firstName!: string;
   lastName!: string;
   email!: string;
   phone!: string;
-  division!: string;
-  title!: string;
-  color: string;
+  team!: string;
+  color!: string;
 
 
   constructor(obj?: any) {
@@ -15,21 +14,19 @@ export class Contact {
     this.lastName = obj ? obj.lastName : '';
     this.email = obj ? obj.email : '';
     this.phone = obj ? obj.phone : '';
-    this.division = obj ? obj.division : '';
-    this.title = obj ? obj.title : '';
+    this.team = obj ? obj.team : '';
     this.color = obj ? obj.color : '';
   }
 
 
-  public toJSON() {
+  public toJSON(): any {
     return {
       id: this.id,
       firstName: this.firstName,
       lastName: this.lastName,
       email: this.email,
       phone: this.phone,
-      division: this.division,
-      title: this.title,
+      team: this.team,
       color: this.color,
     }
   }

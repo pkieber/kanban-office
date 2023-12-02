@@ -1,44 +1,119 @@
-<div class="dialog-container">
+<mat-card class="dialog-container">
   <h1>Add a new contact</h1>
-  <form [formGroup]="userForm" (submit)="onSubmit()" class="user-form">
-    <!-- First Name -->
-    <label>
-      <div class="label-title">First Name</div>
-      <input type="text" formControlName="firstName" />
-    </label>
-    <div *ngIf="userForm.controls.firstName.invalid && userForm.controls.firstName.touched" class="error-message">
-      First name is required
-    </div>
 
-    <!-- Last Name -->
-    <label>
-      <div class="label-title">Last Name</div>
-      <input type="text" formControlName="lastName" />
-    </label>
-    <div *ngIf="userForm.controls.lastName.invalid && userForm.controls.lastName.touched" class="error-message">
-      Last name is required
-    </div>
-
-    <!-- Email -->
-    <label>
-      <div class="label-title">Email</div>
-      <input type="text" formControlName="email" />
-    </label>
-    <div *ngIf="userForm.controls.email.invalid && userForm.controls.email.touched && userForm.controls.email.errors" class="error-message">
-      <div *ngIf="userForm.controls.email.errors['required']">Email is required</div>
-      <div *ngIf="userForm.controls.email.errors['email']">Invalid email</div>
-    </div>
-
-      <!-- Phone -->
-      <label>
-        <div class="label-title">Phone</div>
-        <input type="text" formControlName="phone" />
-      </label>
-      <div *ngIf="userForm.controls.phone.invalid && userForm.controls.phone.touched" class="error-message">
-        Phone is required
+  <form [formGroup]="userForm">
+    <div mat-dialog-content>
+      <div>
+        <mat-form-field class="mr-16" appearance="outline">
+          <mat-label>First Name</mat-label>
+          <input
+            type="text"
+            [disabled]="loading"
+            formControlName="firstName"
+            matInput
+            placeholder="First Name"
+            class="form-control"
+          />
+          <mat-icon matSuffix>note</mat-icon>
+        </mat-form-field>
+        <mat-error *ngIf="userForm.controls['firstName'].invalid && userForm.controls['firstName'].touched" class="error-message">
+          First name is required
+        </mat-error>
+      </div>
+      <div>
+        <mat-form-field class="mr-16" appearance="outline">
+          <mat-label>Last Name</mat-label>
+          <input
+            type="text"
+            [disabled]="loading"
+            formControlName="lastName"
+            matInput
+            placeholder="Last Name"
+            class="form-control"
+          />
+          <mat-icon matSuffix>description</mat-icon>
+        </mat-form-field>
+        <mat-error *ngIf="userForm.controls['lastName'].invalid && userForm.controls['lastName'].touched">
+          Last name is required
+        </mat-error>
       </div>
 
-    <!-- Submit button -->
-    <button type="submit" [disabled]="!userForm.valid" class="submit-button">Submit</button>
+      <div>
+        <mat-form-field class="mr-16" appearance="outline">
+          <mat-label>Email</mat-label>
+          <input
+            type="text"
+            [disabled]="loading"
+            formControlName="email"
+            matInput
+            placeholder="Email"
+            class="form-control"
+          />
+          <mat-icon matSuffix>description</mat-icon>
+        </mat-form-field>
+        <mat-error *ngIf="userForm.controls['email'].invalid && userForm.controls['email'].touched">
+          Email is required
+        </mat-error>
+      </div>
+
+      <div>
+        <mat-form-field class="mr-16" appearance="outline">
+          <mat-label>Phone</mat-label>
+          <input
+            type="text"
+            [disabled]="loading"
+            formControlName="phone"
+            matInput
+            placeholder="Phone"
+            class="form-control"
+          />
+          <mat-icon matSuffix>description</mat-icon>
+        </mat-form-field>
+        <mat-error *ngIf="userForm.controls['phone'].invalid && userForm.controls['phone'].touched">
+          Phone is required
+        </mat-error>
+      </div>
+
+      <div>
+        <mat-form-field class="mr-16" appearance="outline">
+          <mat-label>Team</mat-label>
+          <input
+            type="text"
+            [disabled]="loading"
+            formControlName="team"
+            matInput
+            placeholder="Team"
+            class="form-control"
+          />
+          <mat-icon matSuffix>description</mat-icon>
+        </mat-form-field>
+        <mat-error *ngIf="userForm.controls['team'].invalid && userForm.controls['team'].touched">
+          Team is required
+        </mat-error>
+      </div>
+
+      <div>
+        <mat-form-field class="mr-16" appearance="outline">
+          <mat-label>Color</mat-label>
+          <input
+            type="color"
+            [disabled]="loading"
+            formControlName="color"
+            matInput
+            placeholder="Color"
+            class="form-control"
+          />
+          <mat-icon matSuffix>description</mat-icon>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div mat-dialog-actions>
+      <button [disabled]="loading" mat-button (click)="dialogRef.close()">Cancel</button>
+      <button [disabled]="!userForm.valid" mat-button (click)="onSubmit()" cdkFocusInitial>Save</button>
+    </div>
   </form>
-</div>
+
+
+
+</mat-card>

@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Contact } from 'src/app/models/contact.class';
+import { ContactClass } from 'src/app/models/contact.class';
 import { ContactsService } from 'src/app/services/contacts.service';
 import { AlphabeticalSortPipe } from 'src/app/alphabetical-sort.pipe';
 
@@ -13,7 +13,7 @@ export class ContactListComponent implements OnInit {
   @Input() contactData: any; // Input property to receive contact data
   @Output() showDetail = new EventEmitter<any>(); // Output event emitter
 
-  contactList!: Observable<Array<Contact>>
+  contactList!: Observable<Array<ContactClass>>
   lastName!: string;
   firstName!: string;
   contactId!: string;
@@ -43,7 +43,7 @@ export class ContactListComponent implements OnInit {
   }
 
 
-  showContactDetail(contact: Contact) {
+  showContactDetail(contact: ContactClass) {
     this.contactService.setSelectedContact(contact);
   }
 

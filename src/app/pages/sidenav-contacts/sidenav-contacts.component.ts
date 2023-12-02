@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ContactDialogComponent } from './contact-dialog/contact-dialog.component';
-import { Contact } from 'src/app/models/contact.class';
+import { ContactClass } from 'src/app/models/contact.class';
 
 @Component({
   selector: 'app-sidenav-contacts',
