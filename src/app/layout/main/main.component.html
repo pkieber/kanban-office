@@ -1,6 +1,7 @@
 <mat-drawer-container class="mat-drawer-container" autosize>
   <mat-drawer
     #drawer class="sidenav" mode="side"
+    opened="true"
     [ngClass]="{
       'option-1-background': selectedOption === '1',
       'option-2-background': selectedOption === '2',
@@ -47,6 +48,7 @@
           <mat-icon>group</mat-icon>
         </button>
         <!-- Toolbar drawer icon -->
+        <!--
         <button
           matTooltip="Toggle sidebar"
           mat-icon-button
@@ -55,7 +57,7 @@
         >
           <mat-icon class="IconColor" *ngIf="!drawer.opened">menu</mat-icon>
           <mat-icon class="IconColor" *ngIf="drawer.opened">arrow_back_ios</mat-icon>
-        </button>
+        </button> -->
         <!-- Toolbar Title -->
         <span class="mobile-hide gradient-title" routerLink="/">Kanban Project Management</span>
         <span class="spacer"></span>
