@@ -1,3 +1,44 @@
 <div class="dialog-container">
-  Add a new contact
+  <h1>Add a new contact</h1>
+  <form [formGroup]="userForm" (submit)="onSubmit()" class="user-form">
+    <!-- First Name -->
+    <label>
+      <div class="label-title">First Name</div>
+      <input type="text" formControlName="firstName" />
+    </label>
+    <div *ngIf="userForm.controls.firstName.invalid && userForm.controls.firstName.touched" class="error-message">
+      First name is required
+    </div>
+
+    <!-- Last Name -->
+    <label>
+      <div class="label-title">Last Name</div>
+      <input type="text" formControlName="lastName" />
+    </label>
+    <div *ngIf="userForm.controls.lastName.invalid && userForm.controls.lastName.touched" class="error-message">
+      Last name is required
+    </div>
+
+    <!-- Email -->
+    <label>
+      <div class="label-title">Email</div>
+      <input type="text" formControlName="email" />
+    </label>
+    <div *ngIf="userForm.controls.email.invalid && userForm.controls.email.touched && userForm.controls.email.errors" class="error-message">
+      <div *ngIf="userForm.controls.email.errors['required']">Email is required</div>
+      <div *ngIf="userForm.controls.email.errors['email']">Invalid email</div>
+    </div>
+
+      <!-- Phone -->
+      <label>
+        <div class="label-title">Phone</div>
+        <input type="text" formControlName="phone" />
+      </label>
+      <div *ngIf="userForm.controls.phone.invalid && userForm.controls.phone.touched" class="error-message">
+        Phone is required
+      </div>
+
+    <!-- Submit button -->
+    <button type="submit" [disabled]="!userForm.valid" class="submit-button">Submit</button>
+  </form>
 </div>
