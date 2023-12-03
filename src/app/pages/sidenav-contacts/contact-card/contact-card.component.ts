@@ -17,4 +17,8 @@ export class ContactCardComponent  implements OnInit {
       this.selectedContact = contact;
     });
   }
+
+  onEdit() {
+
+  }
 }

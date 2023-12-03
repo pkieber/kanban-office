@@ -8,9 +8,13 @@
       + Add Task
     </div>
   </div>
-  <h4>Contact information <button>Edit contact</button></h4>
-  <div>{{ selectedContact.email || "n/a" }}</div>
-  <div>{{ selectedContact.phone || "n/a" }}</div>
+  <h4>
+    Contact information
+    <button mat-raised-button (click)="onEdit()">Edit Contact</button>
+  </h4>
+  <div>Email: {{ selectedContact.email || "n/a" }}</div>
+  <div>Phone: {{ selectedContact.phone || "n/a" }}</div>
+  <div>Team: {{ selectedContact.team || "n/a" }}</div>
 </div>
 
 

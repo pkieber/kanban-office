@@ -1,9 +1,8 @@
 import { MatDialogRef } from '@angular/material/dialog';
 import { Component } from '@angular/core';
-import { ContactClass } from 'src/app/models/contact.class';
+// import { ContactClass } from 'src/app/models/contact.class';
 import { ContactsService } from 'src/app/services/contacts.service';
-import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -12,9 +11,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./contact-dialog.component.scss']
 })
 export class ContactDialogComponent {
-  contact = new ContactClass();
+  // contact = new ContactClass();
   loading: boolean = false;
-  userForm: FormGroup;
+  userForm: FormGroup; // reactive form
 
   constructor(
     private contactService: ContactsService,
@@ -46,7 +45,7 @@ export class ContactDialogComponent {
     } catch (error) {
       console.error(error);
       // Show error snackbar
-      this.showSnackbar('Failed to add note', 'error-snackbar');
+      this.showSnackbar('Failed to add contact', 'error-snackbar');
 
     } finally {
       // Stop loader and close dialog
