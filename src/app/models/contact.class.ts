@@ -19,7 +19,7 @@ export class ContactClass {
   }
 
 
-  public toJSON(): any {
+  public toJSON() {
     return {
       id: this.id,
       firstName: this.firstName,
