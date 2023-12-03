@@ -1,8 +1,27 @@
+.search-container {
+  width: 250px;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 20px; /* see list-container */
+}
+
 .list-container {
+  margin-top: 20px; /* see search-container */
   width: 250px;
   height: 100vh;
   padding-top: 16px;
   padding-bottom: 16px;
+}
+
+/* Mobile view */
+@media(max-width:1000px) {
+
+  .list-container, .search-container {
+    width: 100% !important;
+    display: flex;
+    justify-content: center;
+  }
 }
 
 ul {

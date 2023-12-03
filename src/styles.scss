@@ -12,9 +12,12 @@ html, body {
 
 body {
   margin: 0;
+  margin-inline: auto;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   user-select: none;
   scroll-behavior: smooth;
+  max-width: 1280px;
+  background-color: var(--themeColorBlue);
 }
 
 .router-container {
