@@ -72,9 +72,6 @@ export class SidenavAddtaskComponent {
       this.showSnackbar('Task added successfully', 'success-snackbar');
       this.resetForm();
 
-      // Reset the subtask list
-      this.subtaskList = [];
-
     } catch (error) {
       console.error(error);
       this.showSnackbar('Failed to add task', 'error-snackbar');
@@ -83,7 +80,6 @@ export class SidenavAddtaskComponent {
       this.loading = false;
     }
   }
-
 
 
   // Function to reset the entire form with default values
@@ -95,11 +91,9 @@ export class SidenavAddtaskComponent {
       assignments: '',
       dueDate: null,
       priority: 'low',
-      subtasks: '',
     });
 
-    const subtasksArray = this.taskForm.get('subtasks') as FormArray;
-    subtasksArray.clear();
+    this.subtaskList = [];
   }
 
 

@@ -108,3 +108,12 @@ h3 {
   text-wrap: nowrap;
 }
 
+/* Mobile view */
+@media(max-width:1100px) {
+
+  .container-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
