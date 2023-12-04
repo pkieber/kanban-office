@@ -1,7 +1,16 @@
 import { Component } from '@angular/core';
 import { TasksService } from 'src/app/services/tasks.service';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { COMMA, ENTER} from '@angular/cdk/keycodes';
+import { inject } from '@angular/core';
+import { MatChipInputEvent } from '@angular/material/chips';
+import { LiveAnnouncer } from '@angular/cdk/a11y';
+
+
+export interface SubtaskClass {
+  name: string;
+}
 
 @Component({
   selector: 'app-sidenav-addtask',
@@ -10,15 +19,24 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class SidenavAddtaskComponent {
   loading: boolean = false;
-  taskForm: FormGroup; // reactive form
+  taskForm: FormGroup;
+  // Due date
   minDate: Date;
   maxDate: Date;
+  // Assignments
   assignmentList: string[] = ['Person1', 'Person2', 'Person3', 'Person4', 'Person5', 'Person6'];
+  // Subtasks
+  addOnBlur = true;
+  readonly separatorKeysCodes = [ENTER, COMMA] as const;
+  subtaskList: SubtaskClass[] = [];
+  announcer = inject(LiveAnnouncer);
+
 
   constructor(
     private taskService: TasksService,
     private snackBar: MatSnackBar,
   ) {
+    // Form group
     this.taskForm = new FormGroup( {
       title: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required),
@@ -26,9 +44,9 @@ export class SidenavAddtaskComponent {
       dueDate: new FormControl(null, Validators.required),
       assignments: new FormControl('', [Validators.required]),
       priority: new FormControl('low'),
-      subtasks: new FormControl('', [Validators.required]),
+      subtasks: new FormArray([]),
     });
-
+    // Due date
     const currentYear = new Date().getFullYear();
     this.minDate = new Date();
     this.maxDate = new Date(currentYear + 1, 11, 31);
@@ -47,12 +65,15 @@ export class SidenavAddtaskComponent {
   async addNewTask() {
     try {
       this.loading = true;
-      // const taskData = { ...this.taskForm.value, id: '' };
+      this.updateSubtasksFormArray(); // Update the form array before submitting
       const taskData = { ...this.taskForm.value };
       console.log('Task Data:', taskData);
       await this.taskService.create(taskData);
       this.showSnackbar('Task added successfully', 'success-snackbar');
       this.resetForm();
+
+      // Reset the subtask list
+      this.subtaskList = [];
 
     } catch (error) {
       console.error(error);
@@ -62,6 +83,7 @@ export class SidenavAddtaskComponent {
       this.loading = false;
     }
   }
+
 
 
   // Function to reset the entire form with default values
@@ -75,6 +97,9 @@ export class SidenavAddtaskComponent {
       priority: 'low',
       subtasks: '',
     });
+
+    const subtasksArray = this.taskForm.get('subtasks') as FormArray;
+    subtasksArray.clear();
   }
 
 
@@ -82,6 +107,42 @@ export class SidenavAddtaskComponent {
     this.snackBar.open(message, 'OK', {
       duration: 3000,
       panelClass: [panelClass]
+    });
+  }
+
+
+  // Subtasks
+  add(event: MatChipInputEvent): void {
+    const value = (event.value || '').trim();
+
+    // Add subtask
+    if (value) {
+      this.subtaskList.push({name: value});
+    }
+
+    // Clear the input value
+    event.chipInput!.clear();
+  }
+
+
+  remove(subtask: SubtaskClass): void {
+    const index = this.subtaskList.indexOf(subtask);
+
+    if (index >= 0) {
+      this.subtaskList.splice(index, 1);
+
+      this.announcer.announce(`Removed ${subtask.name}`);
+    }
+  }
+
+
+  updateSubtasksFormArray(): void {
+    const subtasksArray = this.taskForm.get('subtasks') as FormArray;
+    subtasksArray.clear(); // Clear the existing form array
+
+    // Add each subtask from subtaskList to the form array
+    this.subtaskList.forEach(subtask => {
+      subtasksArray.push(new FormControl(subtask.name));
     });
   }
 

@@ -23,8 +23,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatChipsModule } from '@angular/material/chips';
 
 // Drag-and-drop implementation
 import { DragDropModule } from '@angular/cdk/drag-drop';
@@ -105,6 +105,8 @@ import { SearchComponent } from './components/search/search.component';
     MatTableModule,
     MatGridListModule,
     MatButtonToggleModule,
+    MatAutocompleteModule,
+    MatChipsModule,
     // Drag-and-drop implementation
     DragDropModule,
   ],

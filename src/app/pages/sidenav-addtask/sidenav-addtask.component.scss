@@ -10,12 +10,48 @@
   }
 }
 
-.add-user-btn {
-  background-color: rgb(255, 255, 255);
-  color: var(--themeColor)!important;
+.field-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
 
-  &:hover {
-    filter: brightness(1.25);
-    cursor: pointer;
+mat-form-field {
+  width: 250px;
+}
+
+mat-button-toggle-group {
+  margin-bottom: 20px;
+  width: 250px;
+  border: none;
+
+  mat-button-toggle {
+    margin: 10px;
+    border-radius: 8px;
   }
+}
+
+/* Style for Urgent priority */
+.mat-button-toggle-checked.urgent-prio {
+  background-color: rgb(255, 61, 0);
+  color: white;
+}
+
+/* Style for Medium priority */
+.mat-button-toggle-checked.medium-prio {
+  background-color: rgb(255, 217, 0);
+}
+
+/* Style for Low priority */
+.mat-button-toggle-checked.low-prio {
+  background-color: #29e263;
+  color: white;
+}
+
+.mat-mdc-form-field-error {
+  margin-bottom: 30px;
+}
+
+textarea {
+  resize: none !important;
 }
