@@ -14,6 +14,8 @@ export class SidenavAddtaskComponent {
   // contact = new ContactClass();
   loading: boolean = false;
   taskForm: FormGroup; // reactive form
+  minDate: Date;
+  maxDate: Date;
 
   constructor(
     private taskService: TasksService,
@@ -23,7 +25,13 @@ export class SidenavAddtaskComponent {
       title: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required),
       category: new FormControl('', [Validators.required]),
+      dueDate: new FormControl(null, Validators.required),
+      assignment: new FormControl('', [Validators.required]),
     });
+
+    const currentYear = new Date().getFullYear();
+    this.minDate = new Date();
+    this.maxDate = new Date(currentYear + 1, 11, 31);
   }
 
 

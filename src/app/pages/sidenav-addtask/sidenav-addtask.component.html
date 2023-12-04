@@ -1,19 +1,14 @@
 <div class="router-container">
   <div class="title-container">
     <h2>Manage Tasks</h2>
-    <!--
-    <button (click)="openDialog()" class="add-user-btn" mat-fab color="primary" matTooltip="Add note">
-      <mat-icon>add</mat-icon>
-    </button>
-    -->
   </div>
     <div class="left-container">
       <form [formGroup]="taskForm">
         <div mat-dialog-content>
-
+          <!-- Add title -->
           <div>
             <mat-form-field class="mr-16" appearance="outline">
-              <mat-label>Title</mat-label>
+              <mat-label>Add title</mat-label>
               <input
                 type="text"
                 [disabled]="loading"
@@ -28,10 +23,10 @@
               Title is required
             </mat-error>
           </div>
-
+          <!-- Add description -->
           <div>
             <mat-form-field class="mr-16" appearance="outline">
-              <mat-label>Description</mat-label>
+              <mat-label>Add description</mat-label>
               <input
                 type="text"
                 [disabled]="loading"
@@ -46,26 +41,52 @@
               Description is required
             </mat-error>
           </div>
-
+          <!-- Select category -->
           <div>
             <mat-form-field class="mr-16" appearance="outline">
-              <mat-label>Category</mat-label>
-              <input
-                type="text"
-                [disabled]="loading"
-                formControlName="category"
-                matInput
-                placeholder="Category"
-                class="form-control"
-              />
+              <mat-label>Select category</mat-label>
+              <mat-select [disabled]="loading" formControlName="category">
+                <mat-option value="Admin">Admin</mat-option>
+                <mat-option value="Finance">Finance</mat-option>
+                <mat-option value="Marketing">Marketing</mat-option>
+                <mat-option value="Sales">Sales</mat-option>
+                <mat-option value="Production">Production</mat-option>
+              </mat-select>
               <mat-icon matSuffix>category</mat-icon>
             </mat-form-field>
             <mat-error *ngIf="taskForm.get('category')?.invalid && taskForm.get('category')?.touched" class="error-message">
               Category is required
             </mat-error>
           </div>
-
-
+          <!-- Select assignment -->
+          <div>
+            <mat-form-field class="mr-16" appearance="outline">
+              <mat-label>Assign task</mat-label>
+              <mat-select [disabled]="loading" formControlName="assignment">
+                <mat-option value="Person1">Person1</mat-option>
+                <mat-option value="Person2">Person2</mat-option>
+                <mat-option value="Person3">Person3</mat-option>
+                <mat-option value="Person4">Person4</mat-option>
+                <mat-option value="Person5">Person5</mat-option>
+              </mat-select>
+              <mat-icon matSuffix>assignment</mat-icon>
+            </mat-form-field>
+            <mat-error *ngIf="taskForm.get('assignment')?.invalid && taskForm.get('assignment')?.touched" class="error-message">
+              Assignment is required
+            </mat-error>
+          </div>
+          <!-- Select due date -->
+          <div>
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Define due date</mat-label>
+              <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" formControlName="dueDate">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <mat-error *ngIf="taskForm.get('dueDate')?.invalid && taskForm.get('dueDate')?.touched" class="error-message">
+              Deadline is required
+            </mat-error>
+          </div>
 
         </div>
 

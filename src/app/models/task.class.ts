@@ -1,8 +1,14 @@
+import { Timestamp } from 'firebase/firestore';
+
 export interface TaskClass {
   id?: string;
   title: string;
   description: string;
+  category?: string;
+  assignment?: string;
+  dueDate?: Timestamp; // Use Timestamp type for dueDate
 }
+
 
 /*
 export class TaskClass {
