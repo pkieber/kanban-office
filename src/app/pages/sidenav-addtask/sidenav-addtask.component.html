@@ -1,17 +1,77 @@
 <div class="router-container">
   <div class="title-container">
     <h2>Manage Tasks</h2>
+    <!--
     <button (click)="openDialog()" class="add-user-btn" mat-fab color="primary" matTooltip="Add note">
       <mat-icon>add</mat-icon>
     </button>
+    -->
   </div>
-
-  <main>
     <div class="left-container">
-      <div></div>
-    </div>
-    <div class="right-container">
-      <div></div>
-    </div>
-  </main>
+      <form [formGroup]="taskForm">
+        <div mat-dialog-content>
+
+          <div>
+            <mat-form-field class="mr-16" appearance="outline">
+              <mat-label>Title</mat-label>
+              <input
+                type="text"
+                [disabled]="loading"
+                formControlName="title"
+                matInput
+                placeholder="Title"
+                class="form-control"
+              />
+              <mat-icon matSuffix>title</mat-icon>
+            </mat-form-field>
+            <mat-error *ngIf="taskForm.get('title')?.invalid && taskForm.get('title')?.touched" class="error-message">
+              Title is required
+            </mat-error>
+          </div>
+
+          <div>
+            <mat-form-field class="mr-16" appearance="outline">
+              <mat-label>Description</mat-label>
+              <input
+                type="text"
+                [disabled]="loading"
+                formControlName="description"
+                matInput
+                placeholder="Description"
+                class="form-control"
+              />
+              <mat-icon matSuffix>description</mat-icon>
+            </mat-form-field>
+            <mat-error *ngIf="taskForm.get('description')?.invalid && taskForm.get('description')?.touched" class="error-message">
+              Description is required
+            </mat-error>
+          </div>
+
+          <div>
+            <mat-form-field class="mr-16" appearance="outline">
+              <mat-label>Category</mat-label>
+              <input
+                type="text"
+                [disabled]="loading"
+                formControlName="category"
+                matInput
+                placeholder="Category"
+                class="form-control"
+              />
+              <mat-icon matSuffix>category</mat-icon>
+            </mat-form-field>
+            <mat-error *ngIf="taskForm.get('category')?.invalid && taskForm.get('category')?.touched" class="error-message">
+              Category is required
+            </mat-error>
+          </div>
+
+
+
+        </div>
+
+        <div mat-dialog-actions>
+          <!--<button [disabled]="loading" mat-button (click)="dialogRef.close()">Cancel</button>-->
+          <button [disabled]="!taskForm.valid" mat-button (click)="onSubmit()" cdkFocusInitial>Save</button>
+        </div>
+      </form>
 </div>

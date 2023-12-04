@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Task } from 'src/app/models/task.class';
+import { TaskClass } from 'src/app/models/task.class';
 
 @Component({
   selector: 'app-board-dialog',
@@ -8,7 +8,7 @@ import { Task } from 'src/app/models/task.class';
   styleUrls: ['./board-dialog.component.scss']
 })
 export class BoardDialogComponent {
-  private backupTask: Partial<Task> = { ...this.data.task };
+  private backupTask: Partial<TaskClass> = { ...this.data.task };
 
   constructor(
     public dialogRef: MatDialogRef<BoardDialogComponent>,
@@ -24,11 +24,11 @@ export class BoardDialogComponent {
 }
 
 export interface TaskDialogData {
-  task: Partial<Task>;
+  task: Partial<TaskClass>;
   enableDelete: boolean;
 }
 
 export interface TaskDialogResult {
-  task: Task;
+  task: TaskClass;
   delete?: boolean;
 }

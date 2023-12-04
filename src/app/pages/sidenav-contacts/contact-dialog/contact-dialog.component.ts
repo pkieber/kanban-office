@@ -32,27 +32,29 @@ export class ContactDialogComponent {
 
 
   async onSubmit() {
-    try {
-      if (this.userForm.valid) {
-        this.loading = true;
-        const contactData = { ...this.userForm.value, id: '' };
-        await this.contactService.create(contactData);
-        this.showSnackbar('Contact added successfully', 'success-snackbar');
+    if (this.userForm.valid) {
+      await this.addNewContact();
+    } else {
+      this.showSnackbar('Please fill in all required fields', 'error-snackbar');
+    }
+  }
 
-      } else {
-        this.showSnackbar('Please fill in all required fields', 'error-snackbar');
-      }
+
+  async addNewContact() {
+    try {
+      this.loading = true;
+      const contactData = { ...this.userForm.value, id: '' };
+      await this.contactService.create(contactData);
+      this.showSnackbar('Contact added successfully', 'success-snackbar');
     } catch (error) {
       console.error(error);
-      // Show error snackbar
       this.showSnackbar('Failed to add contact', 'error-snackbar');
-
     } finally {
-      // Stop loader and close dialog
       this.loading = false;
       this.dialogRef.close();
     }
   }
+
 
 
   showSnackbar(message: string, panelClass: string = 'default-snackbar'): void {

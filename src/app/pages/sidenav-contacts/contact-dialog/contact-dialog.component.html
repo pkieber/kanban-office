@@ -14,9 +14,9 @@
             placeholder="First Name"
             class="form-control"
           />
-          <mat-icon matSuffix>note</mat-icon>
+          <mat-icon matSuffix>verified_user</mat-icon>
         </mat-form-field>
-        <mat-error *ngIf="userForm.controls['firstName'].invalid && userForm.controls['firstName'].touched" class="error-message">
+        <mat-error *ngIf="userForm.get('firstName')?.invalid && userForm.get('firstName')?.touched" class="error-message">
           First name is required
         </mat-error>
       </div>
@@ -31,7 +31,7 @@
             placeholder="Last Name"
             class="form-control"
           />
-          <mat-icon matSuffix>description</mat-icon>
+          <mat-icon matSuffix>verified_user</mat-icon>
         </mat-form-field>
         <mat-error *ngIf="userForm.controls['lastName'].invalid && userForm.controls['lastName'].touched">
           Last name is required
@@ -49,7 +49,7 @@
             placeholder="Email"
             class="form-control"
           />
-          <mat-icon matSuffix>description</mat-icon>
+          <mat-icon matSuffix>mail</mat-icon>
         </mat-form-field>
         <mat-error *ngIf="userForm.controls['email'].invalid && userForm.controls['email'].touched">
           Email is required
@@ -67,7 +67,7 @@
             placeholder="Phone"
             class="form-control"
           />
-          <mat-icon matSuffix>description</mat-icon>
+          <mat-icon matSuffix>call</mat-icon>
         </mat-form-field>
         <mat-error *ngIf="userForm.controls['phone'].invalid && userForm.controls['phone'].touched">
           Phone is required
@@ -85,7 +85,7 @@
             placeholder="Team"
             class="form-control"
           />
-          <mat-icon matSuffix>description</mat-icon>
+          <mat-icon matSuffix>group</mat-icon>
         </mat-form-field>
         <mat-error *ngIf="userForm.controls['team'].invalid && userForm.controls['team'].touched">
           Team is required
@@ -103,7 +103,7 @@
             placeholder="Color"
             class="form-control"
           />
-          <mat-icon matSuffix>description</mat-icon>
+          <mat-icon matSuffix>palette</mat-icon>
         </mat-form-field>
       </div>
     </div>

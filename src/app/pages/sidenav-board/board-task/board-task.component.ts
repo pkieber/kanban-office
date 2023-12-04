@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { EventEmitter, Input, Output } from '@angular/core';
-import { Task } from 'src/app/models/task.class';
+import { TaskClass } from 'src/app/models/task.class';
 
 @Component({
   selector: 'app-board-task',
@@ -8,7 +8,7 @@ import { Task } from 'src/app/models/task.class';
   styleUrls: ['./board-task.component.scss']
 })
 export class BoardTaskComponent {
-  @Input() task: Task | null = null;
-  @Output() edit = new EventEmitter<Task>();
+  @Input() task: TaskClass | null = null;
+  @Output() edit = new EventEmitter<TaskClass>();
 }
 

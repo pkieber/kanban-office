@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Task } from 'src/app/models/task.class';
+import { TaskClass } from 'src/app/models/task.class';
 import { Firestore, collection, collectionData, doc, setDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
@@ -12,7 +12,7 @@ import { BoardDialogComponent, TaskDialogResult } from './board-dialog/board-dia
   styleUrls: ['./sidenav-board.component.scss']
 })
 export class SidenavBoardComponent {
-  todo: Task[] = [
+  todo: TaskClass[] = [
     {
       title: 'Buy milk',
       description: 'Go to the store and buy milk',
@@ -22,13 +22,13 @@ export class SidenavBoardComponent {
       description: 'Using Firebase and Angular create a Kanban app!',
     },
   ];
-  inProgress: Task[] = [];
-  done: Task[] = [];
+  inProgress: TaskClass[] = [];
+  done: TaskClass[] = [];
 
   constructor(private dialog: MatDialog, private firestore: Firestore) {}
 
   private taskCollection = collection(this.firestore, 'tasks'); //
-  allTasks$ = collectionData(this.taskCollection) as Observable<Task[]>; //
+  allTasks$ = collectionData(this.taskCollection) as Observable<TaskClass[]>; //
 
 
   newTask(): void {
@@ -48,7 +48,7 @@ export class SidenavBoardComponent {
       });
   }
 
-  editTask(list: 'done' | 'todo' | 'inProgress', task: Task): void {
+  editTask(list: 'done' | 'todo' | 'inProgress', task: TaskClass): void {
     const dialogRef = this.dialog.open(BoardDialogComponent, {
       width: '270px',
       data: {
@@ -70,7 +70,7 @@ export class SidenavBoardComponent {
     });
   }
 
-  drop(event: CdkDragDrop<Task[]>): void {
+  drop(event: CdkDragDrop<TaskClass[]>): void {
     if (event.previousContainer === event.container) {
       return;
     }
