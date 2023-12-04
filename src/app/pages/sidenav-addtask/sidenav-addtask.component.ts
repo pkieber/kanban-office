@@ -1,6 +1,4 @@
-import { MatDialogRef } from '@angular/material/dialog';
 import { Component } from '@angular/core';
-// import { ContactClass } from 'src/app/models/contact.class';
 import { TasksService } from 'src/app/services/tasks.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -11,11 +9,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./sidenav-addtask.component.scss']
 })
 export class SidenavAddtaskComponent {
-  // contact = new ContactClass();
   loading: boolean = false;
   taskForm: FormGroup; // reactive form
   minDate: Date;
   maxDate: Date;
+  assignmentList: string[] = ['Person1', 'Person2', 'Person3', 'Person4', 'Person5', 'Person6'];
 
   constructor(
     private taskService: TasksService,
@@ -26,7 +24,9 @@ export class SidenavAddtaskComponent {
       description: new FormControl('', Validators.required),
       category: new FormControl('', [Validators.required]),
       dueDate: new FormControl(null, Validators.required),
-      assignment: new FormControl('', [Validators.required]),
+      assignments: new FormControl('', [Validators.required]),
+      priority: new FormControl('low'),
+      subtasks: new FormControl('', [Validators.required]),
     });
 
     const currentYear = new Date().getFullYear();
@@ -47,17 +47,34 @@ export class SidenavAddtaskComponent {
   async addNewTask() {
     try {
       this.loading = true;
-      const taskData = { ...this.taskForm.value, id: '' };
+      // const taskData = { ...this.taskForm.value, id: '' };
+      const taskData = { ...this.taskForm.value };
+      console.log('Task Data:', taskData);
       await this.taskService.create(taskData);
       this.showSnackbar('Task added successfully', 'success-snackbar');
-      // Reset the form after successfully adding a task
-      this.taskForm.reset();
+      this.resetForm();
+
     } catch (error) {
       console.error(error);
       this.showSnackbar('Failed to add task', 'error-snackbar');
+
     } finally {
       this.loading = false;
     }
+  }
+
+
+  // Function to reset the entire form with default values
+  resetForm() {
+    this.taskForm.reset({
+      title: '',
+      description: '',
+      category: '',
+      assignments: '',
+      dueDate: null,
+      priority: 'low',
+      subtasks: '',
+    });
   }
 
 

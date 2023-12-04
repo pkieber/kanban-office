@@ -62,16 +62,14 @@
           <div>
             <mat-form-field class="mr-16" appearance="outline">
               <mat-label>Assign task</mat-label>
-              <mat-select [disabled]="loading" formControlName="assignment">
-                <mat-option value="Person1">Person1</mat-option>
-                <mat-option value="Person2">Person2</mat-option>
-                <mat-option value="Person3">Person3</mat-option>
-                <mat-option value="Person4">Person4</mat-option>
-                <mat-option value="Person5">Person5</mat-option>
+              <mat-select [disabled]="loading" formControlName="assignments" multiple>
+                <mat-option *ngFor="let assignment of assignmentList" [value]="assignment">
+                  {{ assignment }}
+                </mat-option>
               </mat-select>
-              <mat-icon matSuffix>assignment</mat-icon>
+              <mat-icon matSuffix>category</mat-icon>
             </mat-form-field>
-            <mat-error *ngIf="taskForm.get('assignment')?.invalid && taskForm.get('assignment')?.touched" class="error-message">
+            <mat-error *ngIf="taskForm.get('assignments')?.invalid && taskForm.get('assignments')?.touched" class="error-message">
               Assignment is required
             </mat-error>
           </div>
@@ -87,7 +85,33 @@
               Deadline is required
             </mat-error>
           </div>
-
+          <!-- Add priority -->
+          <div>
+            <mat-button-toggle-group name="priority" aria-label="Priority" formControlName="priority">
+              <mat-button-toggle value="urgent">Urgent</mat-button-toggle>
+              <mat-button-toggle value="medium">Medium</mat-button-toggle>
+              <mat-button-toggle value="low">Low</mat-button-toggle>
+            </mat-button-toggle-group>
+          </div>
+          <!-- Add subtasks -->
+          <div>
+            <mat-form-field class="mr-16" appearance="outline">
+              <mat-label>Add subtasks</mat-label>
+              <input
+                type="text"
+                [disabled]="loading"
+                formControlName="subtasks"
+                matInput
+                placeholder="Subtasks"
+                class="form-control"
+              />
+              <mat-icon matSuffix>subtasks</mat-icon>
+            </mat-form-field>
+            <mat-error *ngIf="taskForm.get('subtasks')?.invalid && taskForm.get('subtasks')?.touched" class="error-message">
+              Subtasks is required
+            </mat-error>
+          </div>
+        <!-- End of inputs-->
         </div>
 
         <div mat-dialog-actions>

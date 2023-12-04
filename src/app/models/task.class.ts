@@ -5,8 +5,10 @@ export interface TaskClass {
   title: string;
   description: string;
   category?: string;
-  assignment?: string;
+  assignments?: string;
   dueDate?: Timestamp; // Use Timestamp type for dueDate
+  priority?: string;
+  subtasks?: string;
 }
 
 
