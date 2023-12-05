@@ -1,7 +1,12 @@
 <div class="router-container">
   <div class="title-container">
     <h2>Manage Kanban Board</h2>
-    <button (click)="newTask()" class="add-user-btn" mat-fab color="primary" matTooltip="Add task">
+    <button
+      (click)="newTask()"
+      class="add-user-btn"
+      mat-fab color="primary"
+      matTooltip="Add task"
+    >
       <mat-icon>add</mat-icon>
     </button>
   </div>
@@ -19,7 +24,12 @@
           (cdkDropListDropped)="drop($event)"
           class="list">
           <p class="empty-label" *ngIf="todo.length === 0">Empty list</p>
-          <app-board-task (edit)="editTask('todo', $event)" *ngFor="let task of todo" cdkDrag [task]="task"></app-board-task>
+          <app-board-task
+            (edit)="editTask('todo', $event)"
+            *ngFor="let task of todo"
+            cdkDrag [task]="task"
+          >
+          </app-board-task>
         </mat-card>
       </div>
 
@@ -34,7 +44,12 @@
           (cdkDropListDropped)="drop($event)"
           class="list">
           <p class="empty-label" *ngIf="inProgress.length === 0">Empty list</p>
-          <app-board-task (edit)="editTask('inProgress', $event)" *ngFor="let task of inProgress" cdkDrag [task]="task"></app-board-task>
+          <app-board-task
+            (edit)="editTask('inProgress', $event)"
+            *ngFor="let task of inProgress"
+            cdkDrag [task]="task"
+          >
+          </app-board-task>
         </mat-card>
       </div>
 
@@ -49,7 +64,12 @@
           (cdkDropListDropped)="drop($event)"
           class="list">
           <p class="empty-label" *ngIf="done.length === 0">Empty list</p>
-          <app-board-task (edit)="editTask('done', $event)" *ngFor="let task of done" cdkDrag [task]="task"></app-board-task>
+          <app-board-task
+            (edit)="editTask('done', $event)"
+            *ngFor="let task of done"
+            cdkDrag [task]="task"
+          >
+          </app-board-task>
         </mat-card>
       </div>
     </div>

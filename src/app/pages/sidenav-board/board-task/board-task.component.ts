@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TaskClass } from 'src/app/models/task.class';
 
 @Component({
@@ -10,5 +9,11 @@ import { TaskClass } from 'src/app/models/task.class';
 export class BoardTaskComponent {
   @Input() task: TaskClass | null = null;
   @Output() edit = new EventEmitter<TaskClass>();
-}
 
+
+  onTaskEdit() {
+    if (this.task) {
+      this.edit.emit(this.task);
+    }
+  }
+}

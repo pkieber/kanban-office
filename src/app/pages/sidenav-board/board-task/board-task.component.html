@@ -1,5 +1,5 @@
 <!-- Show task content -->
-<mat-card class="item" *ngIf="task" (dblclick)="edit.emit(task)">
+<mat-card class="item" *ngIf="task">
   <h4>Title: {{ task.title }}</h4>
   <p>
     Description: {{ task.description }}
@@ -19,6 +19,9 @@
   <p>
     Assigned to: {{ task.assignments }}
   </p>
+  <div class="edit-icon" (click)="onTaskEdit()">
+    <button mat-mini-fab>
+      <mat-icon>edit</mat-icon>
+    </button>
+  </div>
 </mat-card>
-
-

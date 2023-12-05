@@ -12,4 +12,12 @@
   cursor: pointer;
 }
 
+.edit-icon {
+  display: flex;
+  justify-content: flex-end;
 
+  button {
+    background: var(--themeColor);
+    cursor: pointer;
+  }
+}
