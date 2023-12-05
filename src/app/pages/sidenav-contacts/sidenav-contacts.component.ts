@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ContactDialogComponent } from './contact-dialog/contact-dialog.component';
-import { ContactClass } from 'src/app/models/contact.class';
+import { BreakpointObserver } from '@angular/cdk/layout';
+
 
 @Component({
   selector: 'app-sidenav-contacts',
@@ -14,7 +15,16 @@ export class SidenavContactsComponent {
   showFiller = false;
 
 
-  constructor(public dialog: MatDialog) {}
+  constructor(
+    public dialog: MatDialog,
+    private breakpointObserver: BreakpointObserver
+  ) {}
+
+
+  // Condition for drawer.toggle()
+  isMobile(): boolean {
+    return this.breakpointObserver.isMatched('(max-width: 1200px)');
+  }
 
 
   openDialogContact(): void {
