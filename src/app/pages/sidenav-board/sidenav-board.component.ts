@@ -16,12 +16,13 @@ export class SidenavBoardComponent implements OnInit {
   inProgress: TaskClass[] = [];
   done: TaskClass[] = [];
 
+
   constructor(
     private dialog: MatDialog,
     private taskService: TasksService,
   ) {}
 
-  /////// Firestore
+
   ngOnInit(): void {
     console.log('SidenavBoardComponent initialized');
     this.loadTasks();
@@ -50,7 +51,6 @@ export class SidenavBoardComponent implements OnInit {
   }
 
 
-  ///////////////
 
   newTask(): void {
     const dialogRef = this.dialog.open(BoardDialogComponent, {
@@ -68,6 +68,7 @@ export class SidenavBoardComponent implements OnInit {
         this.todo.push(result.task);
       });
   }
+
 
   editTask(list: 'done' | 'todo' | 'inProgress', task: TaskClass): void {
     const dialogRef = this.dialog.open(BoardDialogComponent, {
@@ -91,6 +92,8 @@ export class SidenavBoardComponent implements OnInit {
     });
   }
 
+
+  /*
   drop(event: CdkDragDrop<TaskClass[]>): void {
     if (event.previousContainer === event.container) {
       return;
@@ -102,4 +105,37 @@ export class SidenavBoardComponent implements OnInit {
       event.currentIndex
     );
   }
+  */
+
+
+  drop(event: CdkDragDrop<TaskClass[]>): void {
+    if (event.previousContainer === event.container) {
+      return;
+    }
+
+    const movedTask = event.previousContainer.data[event.previousIndex];
+
+    // Update the status based on the container (list) where the task was dropped
+    let newStatus: 'todo' | 'inProgress' | 'done' = 'todo'; // Default value
+    if (event.container.id === 'todo') {
+      newStatus = 'todo';
+    } else if (event.container.id === 'inProgress') {
+      newStatus = 'inProgress';
+    } else if (event.container.id === 'done') {
+      newStatus = 'done';
+    }
+
+    // Update the status of the moved task
+    movedTask.status = newStatus;
+
+    // Save the updated task to Firestore
+    this.taskService.update(movedTask)
+      .then(() => {
+        console.log('Task status updated successfully.');
+      })
+      .catch((error) => {
+        console.error('Error updating task status:', error);
+      });
+  }
+
 }

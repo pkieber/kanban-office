@@ -121,7 +121,7 @@
                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
                     [matChipInputAddOnBlur]="addOnBlur"
                     (matChipInputTokenEnd)="add($event)"
-                    formControlName="subtasks"/>
+                    formArrayName="subtasks"/>
             </mat-chip-grid>
             <mat-icon matSuffix>add</mat-icon>
           </mat-form-field>
@@ -141,7 +141,6 @@
           <button mat-raised-button [disabled]="!taskForm.valid" (click)="onSubmit()" cdkFocusInitial>Save</button>
         </div>
       </div>
-
     </div>
   </form>
 
