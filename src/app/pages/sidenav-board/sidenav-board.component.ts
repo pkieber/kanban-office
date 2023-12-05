@@ -1,35 +1,56 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TaskClass } from 'src/app/models/task.class';
-import { Firestore, collection, collectionData, doc, setDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
 import { BoardDialogComponent, TaskDialogResult } from './board-dialog/board-dialog.component';
+import { TasksService } from 'src/app/services/tasks.service';
 
 @Component({
   selector: 'app-sidenav-board',
   templateUrl: './sidenav-board.component.html',
   styleUrls: ['./sidenav-board.component.scss']
 })
-export class SidenavBoardComponent {
-  todo: TaskClass[] = [
-    {
-      title: 'Buy milk',
-      description: 'Go to the store and buy milk',
-    },
-    {
-      title: 'Create a Kanban app',
-      description: 'Using Firebase and Angular create a Kanban app!',
-    },
-  ];
+export class SidenavBoardComponent implements OnInit {
+  todo: TaskClass[] = [];
   inProgress: TaskClass[] = [];
   done: TaskClass[] = [];
 
-  constructor(private dialog: MatDialog, private firestore: Firestore) {}
+  constructor(
+    private dialog: MatDialog,
+    private taskService: TasksService,
+  ) {}
 
-  private taskCollection = collection(this.firestore, 'tasks'); //
-  allTasks$ = collectionData(this.taskCollection) as Observable<TaskClass[]>; //
+  /////// Firestore
+  ngOnInit(): void {
+    console.log('SidenavBoardComponent initialized');
+    this.loadTasks();
+  }
 
+
+  private loadTasks(): void {
+    this.taskService.getAll().subscribe(tasks => {
+      console.log('Fetched tasks from Firestore:', tasks);
+      // Clear existing tasks
+      this.todo = [];
+      this.inProgress = [];
+      this.done = [];
+
+      // Categorize tasks based on their status
+      tasks.forEach(task => {
+        if (task.status === 'todo') {
+          this.todo.push(task);
+        } else if (task.status === 'inProgress') {
+          this.inProgress.push(task);
+        } else if (task.status === 'done') {
+          this.done.push(task);
+        }
+      });
+    });
+  }
+
+
+  ///////////////
 
   newTask(): void {
     const dialogRef = this.dialog.open(BoardDialogComponent, {

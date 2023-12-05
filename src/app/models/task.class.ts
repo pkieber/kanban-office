@@ -9,6 +9,7 @@ export interface TaskClass {
   dueDate?: Timestamp; // Use Timestamp type for dueDate
   priority?: string;
   subtasks?: string;
+  status?: string;
 }
 
 

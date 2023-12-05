@@ -126,6 +126,14 @@
             <mat-icon matSuffix>add</mat-icon>
           </mat-form-field>
         </div>
+        <!-- Status -->
+        <div class="field-container">
+          <mat-radio-group aria-label="Select an option" formControlName="status">
+            <mat-radio-button value="todo">To do</mat-radio-button>
+            <mat-radio-button value="inProgress">In progress</mat-radio-button>
+            <mat-radio-button value="done">Done</mat-radio-button>
+          </mat-radio-group>
+        </div>
         <!-- End of inputs-->
         <div class="btn-container" mat-dialog-actions>
           <!--<button [disabled]="loading" mat-button (click)="dialogRef.close()">Cancel</button>-->

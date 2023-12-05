@@ -7,13 +7,9 @@
   </div>
 
   <div class="content-wrapper">
-    <!-- cdkDropListData - Input for the drop-down list, which specifies the data array. -->
-    <!-- cdkDropListConnectedTo - Refers to the other cdkDropLists that the current cdkDropList is connected to.-->
     <div class="container-wrapper">
       <div class="container">
         <h3>Backlog</h3>
-
-        <!-- Drag and drop across swimlane "todo"-->
         <mat-card
           cdkDropList
           id="todo"
@@ -29,8 +25,6 @@
 
       <div class="container">
         <h3>In progress</h3>
-
-        <!-- Drag and drop across swimlane "in Progress" -->
         <mat-card
           cdkDropList
           id="inProgress"
@@ -46,21 +40,18 @@
 
       <div class="container">
         <h3>Done</h3>
-
-        <!-- Drag and drop across swimlane "done"-->
-          <mat-card
-            cdkDropList
-            id="done"
-            #doneList="cdkDropList"
-            [cdkDropListData]="done"
-            [cdkDropListConnectedTo]="[todoList, inProgressList]"
-            (cdkDropListDropped)="drop($event)"
-            class="list">
-            <p class="empty-label" *ngIf="done.length === 0">Empty list</p>
-            <app-board-task (edit)="editTask('done', $event)" *ngFor="let task of done" cdkDrag [task]="task"></app-board-task>
+        <mat-card
+          cdkDropList
+          id="done"
+          #doneList="cdkDropList"
+          [cdkDropListData]="done"
+          [cdkDropListConnectedTo]="[todoList, inProgressList]"
+          (cdkDropListDropped)="drop($event)"
+          class="list">
+          <p class="empty-label" *ngIf="done.length === 0">Empty list</p>
+          <app-board-task (edit)="editTask('done', $event)" *ngFor="let task of done" cdkDrag [task]="task"></app-board-task>
         </mat-card>
       </div>
     </div>
-
   </div>
 </div>

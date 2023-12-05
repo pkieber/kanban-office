@@ -45,6 +45,7 @@ export class SidenavAddtaskComponent {
       assignments: new FormControl('', [Validators.required]),
       priority: new FormControl('low'),
       subtasks: new FormArray([]),
+      status: new FormControl('todo'),
     });
     // Due date
     const currentYear = new Date().getFullYear();
@@ -67,19 +68,18 @@ export class SidenavAddtaskComponent {
       this.loading = true;
       this.updateSubtasksFormArray(); // Update the form array before submitting
       const taskData = { ...this.taskForm.value };
-      console.log('Task Data:', taskData);
+      // console.log('Task Data:', taskData);
       await this.taskService.create(taskData);
       this.showSnackbar('Task added successfully', 'success-snackbar');
       this.resetForm();
-
     } catch (error) {
       console.error(error);
       this.showSnackbar('Failed to add task', 'error-snackbar');
-
     } finally {
       this.loading = false;
     }
   }
+
 
 
   // Function to reset the entire form with default values
@@ -91,6 +91,7 @@ export class SidenavAddtaskComponent {
       assignments: '',
       dueDate: null,
       priority: 'low',
+      status: 'todo',
     });
 
     this.subtaskList = [];
