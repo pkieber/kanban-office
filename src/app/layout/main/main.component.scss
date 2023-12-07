@@ -15,6 +15,11 @@ mat-toolbar, mat-toolbar-row {
 /* Sidenav */
 .mat-drawer-container {
   height: 100vh;
+
+  @media (max-width: 750px) {
+    height: calc(100vh - 56px);
+  }
+
 }
 
 .menu-icon {
@@ -128,4 +133,35 @@ mat-toolbar, mat-toolbar-row {
   background: -webkit-linear-gradient(#ffffff, rgb(160, 164, 181));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+/* Mobile navbar */
+.mobile-navbar {
+  display: none;
+
+  @media (max-width: 750px) {
+    height: 56px!important;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background: var(--themeColor);
+    color: white;
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1;
+    display: flex;
+    box-shadow: 0px 3px 3px -2px rgba(0, 0, 0, 0.2), 0px 3px 4px 0px rgba(0, 0, 0, 0.14), 0px 1px 8px 0px rgba(0, 0, 0, 0.12);
+  }
+}
+
+.mobile-navbar a {
+  float: left;
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  cursor: pointer !important;
 }

@@ -35,18 +35,6 @@
       >
 
         <img class="desktop-hide logo" src="assets/img/logo.png" routerLink="/">
-        <button matTooltip="Show overview" routerLink="/summary" routerLinkActive="router-link-active" mat-icon-button class="example-icon desktop-hide">
-          <mat-icon>table_chart</mat-icon>
-        </button>
-        <button matTooltip="Show board" routerLink="/board" routerLinkActive="router-link-active" mat-icon-button class="example-icon desktop-hide">
-          <mat-icon>dashboard_customize</mat-icon>
-        </button>
-        <button matTooltip="Show task-input" routerLink="/addtask" routerLinkActive="router-link-active" mat-icon-button class="example-icon desktop-hide">
-          <mat-icon>task</mat-icon>
-        </button>
-        <button matTooltip="Show contacts" routerLink="/contacts" routerLinkActive="router-link-active" mat-icon-button class="example-icon desktop-hide">
-          <mat-icon>group</mat-icon>
-        </button>
         <!-- Toolbar drawer icon -->
         <!--
         <button
@@ -86,3 +74,22 @@
     <mat-radio-button value="3">Theme 3</mat-radio-button>
   </mat-radio-group>
 </mat-menu>
+
+
+<!-- Mobile navbar -->
+<div class="mobile-nav-container">
+  <div class="mobile-navbar">
+    <button matTooltip="Show overview" routerLink="/summary" routerLinkActive="router-link-active" mat-icon-button class="example-icon desktop-hide">
+      <mat-icon>dashboard</mat-icon>
+    </button>
+    <button matTooltip="Show board" routerLink="/board" routerLinkActive="router-link-active" mat-icon-button class="example-icon desktop-hide">
+      <mat-icon>dashboard_customize</mat-icon>
+    </button>
+    <button matTooltip="Show task-input" routerLink="/addtask" routerLinkActive="router-link-active" mat-icon-button class="example-icon desktop-hide">
+      <mat-icon>task</mat-icon>
+    </button>
+    <button matTooltip="Show contacts" routerLink="/contacts" routerLinkActive="router-link-active" mat-icon-button class="example-icon desktop-hide">
+      <mat-icon>group</mat-icon>
+    </button>
+  </div>
+</div>
