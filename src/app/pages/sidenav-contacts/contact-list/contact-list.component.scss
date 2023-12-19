@@ -7,18 +7,15 @@
 }
 
 .list-container {
-  margin-top: 20px; /* see search-container */
   width: 250px;
-  height: 100vh;
-  padding-top: 16px;
-  padding-bottom: 16px;
+  height: 100%;
 }
 
 /* Mobile view */
 @media(max-width:1000px) {
 
   .list-container, .search-container {
-    width: 100% !important;
+    width: 85% !important;
     display: flex;
     justify-content: center;
   }

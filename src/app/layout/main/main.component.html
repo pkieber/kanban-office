@@ -1,4 +1,5 @@
 <mat-drawer-container class="mat-drawer-container" autosize>
+  <!-- Drawer content-->
   <mat-drawer
     #drawer class="sidenav" mode="side"
     opened="true"
@@ -24,42 +25,28 @@
       <li matTooltip="Show contacts" routerLink="/contacts" routerLinkActive="router-link-active"><mat-icon>group</mat-icon>Contacts</li>
     </ul>
   </mat-drawer>
+  <!-- Toolbar -->
+  <mat-toolbar [ngClass]="{
+    'option-1-background': selectedOption === '1',
+    'option-2-background': selectedOption === '2',
+    'option-3-background': selectedOption === '3'
+    }"
+  >
+    <img class="desktop-hide logo" src="assets/img/logo.png" routerLink="/">
+    <span class="mobile-hide gradient-title" routerLink="/">Kanban Project Management</span>
+    <span class="spacer"></span>
+    <button [matMenuTriggerFor]="menu" #menuTrigger matTooltip="Open menu" matTooltip="Logout" mat-icon-button class="example-icon">
+      <mat-icon>settings</mat-icon>
+    </button>
+    <button (click)="onLogout()" matTooltip="Logout" mat-icon-button class="example-icon">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </mat-toolbar>
+  <!-- Main content-->
   <div>
-    <p>
-
-      <mat-toolbar [ngClass]="{
-        'option-1-background': selectedOption === '1',
-        'option-2-background': selectedOption === '2',
-        'option-3-background': selectedOption === '3'
-        }"
-      >
-
-        <img class="desktop-hide logo" src="assets/img/logo.png" routerLink="/">
-        <!-- Toolbar drawer icon -->
-        <!--
-        <button
-          matTooltip="Toggle sidebar"
-          mat-icon-button
-          (click)="drawer.toggle()"
-          class="mobile-hide"
-        >
-          <mat-icon class="IconColor" *ngIf="!drawer.opened">menu</mat-icon>
-          <mat-icon class="IconColor" *ngIf="drawer.opened">arrow_back_ios</mat-icon>
-        </button> -->
-        <!-- Toolbar Title -->
-        <span class="mobile-hide gradient-title" routerLink="/">Kanban Project Management</span>
-        <span class="spacer"></span>
-        <button [matMenuTriggerFor]="menu" #menuTrigger matTooltip="Open menu" matTooltip="Logout" mat-icon-button class="example-icon">
-          <mat-icon>settings</mat-icon>
-        </button>
-        <button (click)="onLogout()" matTooltip="Logout" mat-icon-button class="example-icon">
-          <mat-icon>logout</mat-icon>
-        </button>
-      </mat-toolbar>
-    </p>
-    <!-- Insert content-->
     <router-outlet></router-outlet>
   </div>
+  <!-- Drawer content END-->
 </mat-drawer-container>
 
 <!-- Dialog-menu-->
@@ -76,7 +63,7 @@
 </mat-menu>
 
 
-<!-- Mobile navbar -->
+<!-- Mobile navbar (bottom)-->
 <div class="mobile-nav-container">
   <div class="mobile-navbar">
     <button matTooltip="Show overview" routerLink="/summary" routerLinkActive="router-link-active" mat-icon-button class="example-icon desktop-hide">

@@ -41,7 +41,7 @@
 }
 
 mat-drawer-container {
-  height: calc(100vh - 70px); // - Toolbar height
+  height: 100svh;
 }
 
 
@@ -50,5 +50,9 @@ mat-drawer-container {
 
   .sidenav {
     width: 100%;
+  }
+
+  .add-user-btn {
+    bottom: 50px;
   }
 }

@@ -26,18 +26,20 @@ body {
   max-width: 1280px;
   background-color: var(--themeColorBlue);
   font-family: 'Roboto', sans-serif !important;
+  overflow-x: hidden !important;
 
 }
 
 .router-container {
-  padding-top: 20px;
+  padding-top: 70px;
   padding-left: 56px;
   padding-right: 56px;
+  padding-bottom: 40px;
 
   @media (max-width: 750px) {
-    padding-top: 10px;
     padding-left: 16px;
     padding-right: 16px;
+    padding-bottom: 80px;
   }
 }
 
@@ -107,3 +109,10 @@ h4 {
 mat-error {
   font-size: 12px;
 }
+
+mat-toolbar {
+  position: fixed;
+  top: 0;
+  z-index: 10;
+}
+

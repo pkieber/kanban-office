@@ -8,6 +8,9 @@ mat-card {
 }
 
 .del-btn {
+  background: transparent;
+  color: var(--themeColor);
+
   &:hover {
     filter: brightness(1.25);
     cursor: pointer;
