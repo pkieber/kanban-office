@@ -41,9 +41,11 @@
 }
 
 mat-drawer-container {
+  margin-top: -56px; /* height of toolbar */
+  padding-top: 56px;
   height: 100svh;
+  overflow: hidden !important;
 }
-
 
 /* Mobile view */
 @media(max-width:1000px) {
@@ -56,3 +58,5 @@ mat-drawer-container {
     bottom: 50px;
   }
 }
+
+

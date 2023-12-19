@@ -12,6 +12,12 @@ mat-toolbar, mat-toolbar-row {
   }
 }
 
+mat-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
 /* Sidenav */
 .mat-drawer-container {
   height: 100vh;
