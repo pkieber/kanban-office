@@ -55,6 +55,8 @@ import { ContactCardComponent } from './pages/sidenav-contacts/contact-card/cont
 import { ContactDialogComponent } from './pages/sidenav-contacts/contact-dialog/contact-dialog.component';
 import { AlphabeticalSortPipe } from './alphabetical-sort.pipe';
 import { SearchComponent } from './components/search/search.component';
+import { CustomSidenavComponent } from './components/custom-sidenav/custom-sidenav.component';
+import { CustomeMobilenavComponent } from './components/custom-mobilenav/custom-mobilenav.component';
 
 
 @NgModule({
@@ -76,6 +78,8 @@ import { SearchComponent } from './components/search/search.component';
     ContactDialogComponent,
     AlphabeticalSortPipe,
     SearchComponent,
+    CustomSidenavComponent,
+    CustomeMobilenavComponent,
   ],
   imports: [
     BrowserModule,

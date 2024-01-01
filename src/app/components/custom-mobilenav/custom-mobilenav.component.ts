@@ -13,13 +13,6 @@ export type MenuItem = {
 
 @Component({
   selector: 'app-custom-mobilenav',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatListModule,
-    MatIconModule,
-    RouterModule,
-  ],
   templateUrl: './custom-mobilenav.component.html',
   styleUrl: './custom-mobilenav.component.scss'
 })
