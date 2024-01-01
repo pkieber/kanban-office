@@ -26,6 +26,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatListModule } from '@angular/material/list';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 // Drag-and-drop implementation
 import { DragDropModule } from '@angular/cdk/drag-drop';
@@ -113,6 +114,7 @@ import { CustomeMobilenavComponent } from './components/custom-mobilenav/custom-
     MatAutocompleteModule,
     MatChipsModule,
     MatListModule,
+    MatSlideToggleModule,
     // Drag-and-drop implementation
     DragDropModule,
   ],
