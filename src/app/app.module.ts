@@ -25,6 +25,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatListModule } from '@angular/material/list';
 
 // Drag-and-drop implementation
 import { DragDropModule } from '@angular/cdk/drag-drop';
@@ -107,6 +108,7 @@ import { SearchComponent } from './components/search/search.component';
     MatButtonToggleModule,
     MatAutocompleteModule,
     MatChipsModule,
+    MatListModule,
     // Drag-and-drop implementation
     DragDropModule,
   ],

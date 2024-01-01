@@ -30,6 +30,12 @@ body {
 
 }
 
+/* Background-color setting */
+.mat-drawer-content,
+.router-container {
+  background-color: whitesmoke;
+}
+
 .router-container {
   padding-top: 20px;
   padding-left: 56px;
@@ -110,3 +116,7 @@ mat-error {
   font-size: 12px;
 }
 
+.mdc-text-field  {
+  background: white;
+  color: var(--themeColor);
+}

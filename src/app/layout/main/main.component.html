@@ -65,7 +65,11 @@
 
 <!-- Mobile navbar (bottom)-->
 <div class="mobile-nav-container">
-  <div class="mobile-navbar">
+  <div class="mobile-navbar" [ngClass]="{
+    'option-1-background': selectedOption === '1',
+    'option-2-background': selectedOption === '2',
+    'option-3-background': selectedOption === '3'
+  }">
     <button matTooltip="Show overview" routerLink="/summary" routerLinkActive="router-link-active" mat-icon-button class="example-icon desktop-hide">
       <mat-icon>dashboard</mat-icon>
     </button>

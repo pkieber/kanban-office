@@ -1,0 +1,21 @@
+<!-- Mobile navbar -->
+<nav class="mobile-nav-container">
+  <div class="navbar">
+    <a
+      mat-list-item
+      class="menu-item"
+      *ngFor="let item of menuItems()"
+      [routerLink]="item.route"
+      routerLinkActive="selected-menu-item"
+      #rla="routerLinkActive"
+      [activated]="rla.isActive"
+    >
+      <mat-icon
+        [fontSet]="rla.isActive ? 'material-icons' : 'material-icons-outlined'"
+        matListItemIcon
+      >
+        {{ item.icon }}
+      </mat-icon>
+    </a>
+  </div>
+</nav>
