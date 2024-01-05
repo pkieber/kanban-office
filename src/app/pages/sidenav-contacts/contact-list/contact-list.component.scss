@@ -22,7 +22,6 @@ li {
 }
 
 .alphabet-title {
-  color: var(--themeColor);
   padding-left: 28px;
 }
 
@@ -63,7 +62,7 @@ li {
   }
 
   &:hover {
-    background-color: #f0f0f0;
+    background-color: #f0f0f091;
   }
 }
 

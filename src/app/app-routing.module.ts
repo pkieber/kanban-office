@@ -5,6 +5,7 @@ import { SidenavSummaryComponent } from './pages/sidenav-summary/sidenav-summary
 import { SidenavBoardComponent } from './pages/sidenav-board/sidenav-board.component';
 import { SidenavAddtaskComponent } from './pages/sidenav-addtask/sidenav-addtask.component';
 import { SidenavContactsComponent } from './pages/sidenav-contacts/sidenav-contacts.component';
+import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'contacts',
     component: SidenavContactsComponent,
+  },
+  {
+    path: '**',
+    component: NotFoundPageComponent
   },
   /*
   { path: '', component: MainComponent,

@@ -58,7 +58,9 @@ import { AlphabeticalSortPipe } from './alphabetical-sort.pipe';
 import { SearchComponent } from './components/search/search.component';
 import { CustomSidenavComponent } from './components/custom-sidenav/custom-sidenav.component';
 import { CustomeMobilenavComponent } from './components/custom-mobilenav/custom-mobilenav.component';
-
+import { BoardTaskDialogComponent } from './pages/sidenav-board/board-task-dialog/board-task-dialog.component';
+import { AddtaskFormComponent } from './pages/sidenav-addtask/addtask-form/addtask-form.component';
+import { AddContactFormComponent } from './pages/sidenav-contacts/add-contact-form/add-contact-form.component';
 
 @NgModule({
   declarations: [
@@ -81,6 +83,9 @@ import { CustomeMobilenavComponent } from './components/custom-mobilenav/custom-
     SearchComponent,
     CustomSidenavComponent,
     CustomeMobilenavComponent,
+    BoardTaskDialogComponent,
+    AddtaskFormComponent,
+    AddContactFormComponent,
   ],
   imports: [
     BrowserModule,

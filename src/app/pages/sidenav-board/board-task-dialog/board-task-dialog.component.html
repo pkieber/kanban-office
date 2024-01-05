@@ -1,0 +1,27 @@
+<mat-card class="item">
+  TEST TEST TEST
+  <h4>Title: {{ data.task.title }}</h4>
+  <p>
+    Description: {{ data.task.description }}
+  </p>
+  <p>
+    Category: {{ data.task.category }}
+  </p>
+  <p>
+    Priority: {{ data.task.priority }}
+  </p>
+  <p>
+    Subtasks: {{ data.task.subtasks }}
+  </p>
+  <p>
+    Due date: {{ data.task.dueDate?.toDate() | date: 'yyyy-MM-dd' }}
+  </p>
+  <p>
+    Assigned to: {{ data.task.assignments }}
+  </p>
+  <div class="edit-icon" (click)="onEditDisplayedCard()">
+    <button mat-mini-fab>
+      <mat-icon>edit</mat-icon>
+    </button>
+  </div>
+</mat-card>

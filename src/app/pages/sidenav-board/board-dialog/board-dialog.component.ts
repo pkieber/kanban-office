@@ -10,6 +10,10 @@ import { TaskClass } from 'src/app/models/task.class';
 export class BoardDialogComponent {
   private backupTask: Partial<TaskClass> = { ...this.data.task };
 
+    // Due date
+    minDate: Date | undefined;
+    maxDate: Date | undefined;
+
   constructor(
     public dialogRef: MatDialogRef<BoardDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: TaskDialogData

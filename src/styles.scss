@@ -50,11 +50,6 @@ $my-theme-dark: mat.define-dark-theme((
   color: var(--themeColorWhite)!important;
 }
 
-.mat-icon,
-.mdc-form-field {
- color: var(--themeColorWhite)!important;
-}
-
 .mat-sidenav,
 .mat-toolbar,
 .navbar {
@@ -155,5 +150,5 @@ h4 {
 }
 
 button > .mat-icon {
-  color: var(--themeColorBlue) !important;
+  color: #ff4081!important;
 }

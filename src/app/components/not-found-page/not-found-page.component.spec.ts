@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SidenavAddtaskComponent } from './sidenav-addtask.component';
+import { NotFoundPageComponent } from './not-found-page.component';
 
-describe('SidenavAddtaskComponent', () => {
-  let component: SidenavAddtaskComponent;
-  let fixture: ComponentFixture<SidenavAddtaskComponent>;
+describe('NotFoundPageComponent', () => {
+  let component: NotFoundPageComponent;
+  let fixture: ComponentFixture<NotFoundPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SidenavAddtaskComponent ]
+      imports: [NotFoundPageComponent]
     })
     .compileComponents();
-
-    fixture = TestBed.createComponent(SidenavAddtaskComponent);
+    
+    fixture = TestBed.createComponent(NotFoundPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
