@@ -1,1 +1,125 @@
-<p>contact-edit works!</p>
+<mat-card>
+<form [formGroup]="editContactForm">
+  <mat-card-header>
+    <mat-card-title>
+      Edit selected contact
+    </mat-card-title>
+  </mat-card-header>
+  <div mat-dialog-content>
+    <div class="field-container">
+      <mat-form-field class="mr-16" appearance="outline">
+        <mat-label>Edit first name</mat-label>
+        <input
+          type="text"
+          [disabled]="loading"
+          formControlName="firstName"
+          matInput
+          placeholder="First Name"
+          class="form-control"
+          value="{{selectedContact.firstName}}"
+        />
+        <mat-icon matSuffix>verified_user</mat-icon>
+      </mat-form-field>
+      <mat-error *ngIf="editContactForm.get('firstName')?.invalid && editContactForm.get('firstName')?.touched" class="error-message">
+        First name is required
+      </mat-error>
+    </div>
+    <div class="field-container">
+      <mat-form-field class="mr-16" appearance="outline">
+        <mat-label>Edit last name</mat-label>
+        <input
+          type="text"
+          [disabled]="loading"
+          formControlName="lastName"
+          matInput
+          placeholder="Last Name"
+          class="form-control"
+          value="{{selectedContact.lastName}}"
+        />
+        <mat-icon matSuffix>verified_user</mat-icon>
+      </mat-form-field>
+      <mat-error *ngIf="editContactForm.controls['lastName'].invalid && editContactForm.controls['lastName'].touched">
+        Last name is required
+      </mat-error>
+    </div>
+
+    <div class="field-container">
+      <mat-form-field class="mr-16" appearance="outline">
+        <mat-label>Edit email</mat-label>
+        <input
+          type="text"
+          [disabled]="loading"
+          formControlName="email"
+          matInput
+          placeholder="Email"
+          class="form-control"
+          value="{{selectedContact.email}}"
+        />
+        <mat-icon matSuffix>mail</mat-icon>
+      </mat-form-field>
+      <mat-error *ngIf="editContactForm.controls['email'].invalid && editContactForm.controls['email'].touched">
+        Email is required
+      </mat-error>
+    </div>
+
+    <div class="field-container">
+      <mat-form-field class="mr-16" appearance="outline">
+        <mat-label>Edit phone n°</mat-label>
+        <input
+          type="text"
+          [disabled]="loading"
+          formControlName="phone"
+          matInput
+          placeholder="Phone"
+          class="form-control"
+          value="{{selectedContact.phone}}"
+        />
+        <mat-icon matSuffix>call</mat-icon>
+      </mat-form-field>
+      <mat-error *ngIf="editContactForm.controls['phone'].invalid && editContactForm.controls['phone'].touched">
+        Phone is required
+      </mat-error>
+    </div>
+
+    <div class="field-container">
+      <mat-form-field class="mr-16" appearance="outline">
+        <mat-label>Edit team</mat-label>
+        <input
+          type="text"
+          [disabled]="loading"
+          formControlName="team"
+          matInput
+          placeholder="Team"
+          class="form-control"
+          value="{{selectedContact.team}}"
+        />
+        <mat-icon matSuffix>group</mat-icon>
+      </mat-form-field>
+      <mat-error *ngIf="editContactForm.controls['team'].invalid && editContactForm.controls['team'].touched">
+        Team is required
+      </mat-error>
+    </div>
+
+    <div class="field-container">
+      <mat-form-field class="mr-16" appearance="outline">
+        <mat-label>Edit color</mat-label>
+        <input
+          type="color"
+          [disabled]="loading"
+          formControlName="color"
+          matInput
+          placeholder="Color"
+          class="form-control"
+          value="{{selectedContact.color}}"
+        />
+        <mat-icon matSuffix>palette</mat-icon>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="btn-container" mat-dialog-actions>
+    <button mat-raised-button [disabled]="loading" mat-button (click)="dialogRef.close()">Cancel</button>
+    <button mat-raised-button [disabled]="!editContactForm.valid" mat-button (click)="onSave()" cdkFocusInitial>Save</button>
+  </div>
+</form>
+</mat-card>

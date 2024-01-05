@@ -61,6 +61,7 @@ import { CustomeMobilenavComponent } from './components/custom-mobilenav/custom-
 import { BoardTaskDialogComponent } from './pages/sidenav-board/board-task-dialog/board-task-dialog.component';
 import { AddtaskFormComponent } from './pages/sidenav-addtask/addtask-form/addtask-form.component';
 import { AddContactFormComponent } from './pages/sidenav-contacts/add-contact-form/add-contact-form.component';
+import { ContactEditComponent } from './pages/sidenav-contacts/contact-edit/contact-edit.component';
 
 @NgModule({
   declarations: [
@@ -86,6 +87,7 @@ import { AddContactFormComponent } from './pages/sidenav-contacts/add-contact-fo
     BoardTaskDialogComponent,
     AddtaskFormComponent,
     AddContactFormComponent,
+    ContactEditComponent,
   ],
   imports: [
     BrowserModule,
