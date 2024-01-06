@@ -1,6 +1,6 @@
 <!-- Show task content -->
 <mat-card class="item" *ngIf="task">
-  <h4 (click)="onClickShow()">Title: {{ task.title }}</h4>
+  <h4>Title: {{ task.title }}</h4>
   <p>
     Description: {{ task.description }}
   </p>
@@ -19,7 +19,12 @@
   <p>
     Assigned to: {{ task.assignments }}
   </p>
-  <div class="edit-icon" (click)="onTaskEdit()">
+  <div class="edit-icon" (click)="onClickShow()">
+    <button mat-mini-fab>
+      <mat-icon>open_in_new</mat-icon>
+    </button>
+  </div>
+  <div class="edit-icon" (click)="onEditTask()">
     <button mat-mini-fab>
       <mat-icon>edit</mat-icon>
     </button>

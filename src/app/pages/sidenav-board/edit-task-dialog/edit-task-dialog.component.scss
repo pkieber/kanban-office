@@ -1,0 +1,18 @@
+mat-card {
+  padding: 10px;
+}
+
+.mat-mdc-form-field {
+  margin-inline: 16px;
+  margin-top: 16px;
+}
+
+.del-btn {
+  background: transparent;
+  color: var(--themeColor);
+
+  &:hover {
+    filter: brightness(1.25);
+    cursor: pointer;
+  }
+}

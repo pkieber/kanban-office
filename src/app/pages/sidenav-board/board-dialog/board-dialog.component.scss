@@ -1,18 +1,11 @@
-mat-card {
-  padding: 10px;
-}
+.title-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  height: 70px;
 
-.mat-mdc-form-field {
-  margin-inline: 16px;
-  margin-top: 16px;
-}
-
-.del-btn {
-  background: transparent;
-  color: var(--themeColor);
-
-  &:hover {
-    filter: brightness(1.25);
-    cursor: pointer;
+  h2 {
+    margin: 0;
   }
 }

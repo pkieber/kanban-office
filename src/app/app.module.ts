@@ -49,7 +49,7 @@ import { SidenavBoardComponent } from './pages/sidenav-board/sidenav-board.compo
 import { SidenavAddtaskComponent } from './pages/sidenav-addtask/sidenav-addtask.component';
 import { SidenavContactsComponent } from './pages/sidenav-contacts/sidenav-contacts.component';
 import { SidenavLegalComponent } from './pages/sidenav-legal/sidenav-legal.component';
-import { BoardDialogComponent } from './pages/sidenav-board/board-dialog/board-dialog.component';
+import { EditTaskDialogComponent } from './pages/sidenav-board/edit-task-dialog/edit-task-dialog.component';
 import { BoardTaskComponent } from './pages/sidenav-board/board-task/board-task.component';
 import { ContactListComponent } from './pages/sidenav-contacts/contact-list/contact-list.component';
 import { ContactCardComponent } from './pages/sidenav-contacts/contact-card/contact-card.component';
@@ -58,10 +58,14 @@ import { AlphabeticalSortPipe } from './alphabetical-sort.pipe';
 import { SearchComponent } from './components/search/search.component';
 import { CustomSidenavComponent } from './components/custom-sidenav/custom-sidenav.component';
 import { CustomeMobilenavComponent } from './components/custom-mobilenav/custom-mobilenav.component';
-import { BoardTaskDialogComponent } from './pages/sidenav-board/board-task-dialog/board-task-dialog.component';
+import { ShowTaskDialogComponent } from './pages/sidenav-board/show-task-dialog/show-task-dialog.component';
 import { AddtaskFormComponent } from './pages/sidenav-addtask/addtask-form/addtask-form.component';
 import { AddContactFormComponent } from './pages/sidenav-contacts/add-contact-form/add-contact-form.component';
 import { ContactEditComponent } from './pages/sidenav-contacts/contact-edit/contact-edit.component';
+import { BoardDialogComponent } from './pages/sidenav-board/board-dialog/board-dialog.component';
+import { BaseContactFormComponent } from './shared/base-contact-form-component.component';
+import { BaseTaskFormComponent } from './shared/base-task-form-component.component';
+
 
 @NgModule({
   declarations: [
@@ -75,7 +79,7 @@ import { ContactEditComponent } from './pages/sidenav-contacts/contact-edit/cont
     SidenavAddtaskComponent,
     SidenavContactsComponent,
     SidenavLegalComponent,
-    BoardDialogComponent,
+    EditTaskDialogComponent,
     BoardTaskComponent,
     ContactListComponent,
     ContactCardComponent,
@@ -84,10 +88,11 @@ import { ContactEditComponent } from './pages/sidenav-contacts/contact-edit/cont
     SearchComponent,
     CustomSidenavComponent,
     CustomeMobilenavComponent,
-    BoardTaskDialogComponent,
+    ShowTaskDialogComponent,
     AddtaskFormComponent,
     AddContactFormComponent,
     ContactEditComponent,
+    BoardDialogComponent,
   ],
   imports: [
     BrowserModule,

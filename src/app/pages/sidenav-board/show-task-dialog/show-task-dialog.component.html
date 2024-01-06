@@ -1,5 +1,4 @@
 <mat-card class="item">
-  TEST TEST TEST
   <h4>Title: {{ data.task.title }}</h4>
   <p>
     Description: {{ data.task.description }}
@@ -19,7 +18,7 @@
   <p>
     Assigned to: {{ data.task.assignments }}
   </p>
-  <div class="edit-icon" (click)="onEditDisplayedCard()">
+  <div class="edit-icon" (click)="onTaskEdit()">
     <button mat-mini-fab>
       <mat-icon>edit</mat-icon>
     </button>

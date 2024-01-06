@@ -3,8 +3,9 @@ import { TaskClass } from 'src/app/models/task.class';
 import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
-import { BoardDialogComponent, TaskDialogResult } from './board-dialog/board-dialog.component';
 import { TasksService } from 'src/app/services/tasks.service';
+import { BoardDialogComponent } from './board-dialog/board-dialog.component';
+import { TaskDialogResult } from './edit-task-dialog/edit-task-dialog.component';
 
 @Component({
   selector: 'app-sidenav-board',
@@ -70,6 +71,7 @@ export class SidenavBoardComponent implements OnInit {
   }
 
 
+  /* Kann man löschen */
   editTask(list: 'done' | 'todo' | 'inProgress', task: TaskClass): void {
     const dialogRef = this.dialog.open(BoardDialogComponent, {
       width: '270px',
@@ -91,22 +93,7 @@ export class SidenavBoardComponent implements OnInit {
       }
     });
   }
-
-
-  /*
-  drop(event: CdkDragDrop<TaskClass[]>): void {
-    if (event.previousContainer === event.container) {
-      return;
-    }
-    transferArrayItem(
-      event.previousContainer.data,
-      event.container.data,
-      event.previousIndex,
-      event.currentIndex
-    );
-  }
-  */
-
+  /* */
 
   drop(event: CdkDragDrop<TaskClass[]>): void {
     if (event.previousContainer === event.container) {

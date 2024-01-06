@@ -152,3 +152,9 @@ h4 {
 button > .mat-icon {
   color: #ff4081!important;
 }
+
+body .cdk-overlay-container .cdk-overlay-pane {
+  width: unset !important;
+  max-width: unset !important;
+  overflow: auto!important;
+}

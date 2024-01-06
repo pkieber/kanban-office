@@ -56,19 +56,6 @@ textarea {
   resize: none !important;
 }
 
-.form-container {
-  display: flex;
-  gap: 40px;
-  position: relative;
-}
-
-.left-container {
-
-}
-
-.right-container {
-
-}
 
 .btn-container {
   display: flex;
@@ -76,15 +63,22 @@ textarea {
   margin-top: 24px;
 }
 
+.form-container {
+  display: flex;
+  gap: 40px;
+}
+
 /* Mobile view */
 @media(max-width:1000px) {
+
+  .form-container {
+    gap: 0 !important;
+  }
 
   .form-container, .title-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    gap: 0;
   }
 
   .btn-container {
@@ -95,3 +89,4 @@ textarea {
     justify-content: center;
   }
 }
+

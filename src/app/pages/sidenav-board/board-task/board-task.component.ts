@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TaskClass } from 'src/app/models/task.class';
-import { BoardTaskDialogComponent } from '../board-task-dialog/board-task-dialog.component';
+import { ShowTaskDialogComponent } from '../show-task-dialog/show-task-dialog.component';
+import { EditTaskDialogComponent } from '../edit-task-dialog/edit-task-dialog.component';
 
 @Component({
   selector: 'app-board-task',
@@ -16,20 +17,26 @@ export class BoardTaskComponent {
 
   onClickShow(): void {
     if (this.task) {
-      const dialogRef = this.dialog.open(BoardTaskDialogComponent, {
+      const dialogRef = this.dialog.open(ShowTaskDialogComponent, {
         data: { task: this.task },
       });
-
-      dialogRef.afterClosed().subscribe(() => {
-        // Handle the dialog closed event
-        this.onTaskEdit();
-      });
     }
   }
 
-  onTaskEdit() {
-    if (this.task) {
-      this.edit.emit(this.task);
-    }
+  /*
+  onEditClick() {
+    console.log('Edit clicked');
+    this.edit.emit();
   }
+  */
+
+  onEditTask(): void {
+    const dialogRef = this.dialog.open(EditTaskDialogComponent, {
+      data: { task: this.task }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+    });
+  }
+
 }
