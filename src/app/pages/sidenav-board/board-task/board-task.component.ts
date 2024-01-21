@@ -17,11 +17,13 @@ export class BoardTaskComponent {
 
   onClickShow(): void {
     if (this.task) {
+      // console.log('Task data before opening dialog:', this.task);
       const dialogRef = this.dialog.open(ShowTaskDialogComponent, {
         data: { task: this.task },
       });
     }
   }
+
 
   /*
   onEditClick() {

@@ -65,6 +65,7 @@ import { ContactEditComponent } from './pages/sidenav-contacts/contact-edit/cont
 import { BoardDialogComponent } from './pages/sidenav-board/board-dialog/board-dialog.component';
 import { BaseContactFormComponent } from './shared/base-contact-form-component.component';
 import { BaseTaskFormComponent } from './shared/base-task-form-component.component';
+import { DialogConfirmationComponent } from './components/dialog-confirmation/dialog-confirmation.component';
 
 
 @NgModule({
@@ -93,6 +94,7 @@ import { BaseTaskFormComponent } from './shared/base-task-form-component.compone
     AddContactFormComponent,
     ContactEditComponent,
     BoardDialogComponent,
+    DialogConfirmationComponent,
   ],
   imports: [
     BrowserModule,

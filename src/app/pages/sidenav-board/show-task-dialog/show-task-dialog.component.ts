@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Inject, Input, Output } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { TaskClass } from 'src/app/models/task.class';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'; // Import FormBuilder and FormGroup
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { TasksService } from 'src/app/services/tasks.service';
 
 @Component({
   selector: 'app-show-task-dialog',
@@ -18,7 +19,8 @@ export class ShowTaskDialogComponent {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { task: TaskClass },
     public dialogRef: MatDialogRef<ShowTaskDialogComponent>,
-    private fb: FormBuilder // Inject FormBuilder
+    private fb: FormBuilder,
+    private taskService: TasksService,
   ) {
     // Initialize taskForm with empty values
     this.taskForm = fb.group({
