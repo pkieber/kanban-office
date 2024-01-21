@@ -62,7 +62,7 @@ export class EditTaskDialogComponent implements OnInit {
     this.maxDate = new Date(currentYear + 1, 11, 31);
 
     // Initialize subtasks from data.task
-    this.subtaskList = Array.isArray(this.data.task.subtasks) ? this.data.task.subtasks : [];
+    this.subtaskList = Array.isArray(this.data.task.subtasks) ? [...this.data.task.subtasks] : [];
 
     // Update the subtasks form array
     this.updateSubtasksFormArray();
@@ -132,6 +132,7 @@ export class EditTaskDialogComponent implements OnInit {
     // Add subtask
     if (value) {
       this.subtaskList.push({ name: value });
+      this.updateSubtasksFormArray(); // Update the form array after adding a new subtask
     }
 
     // Clear the input value
@@ -145,6 +146,7 @@ export class EditTaskDialogComponent implements OnInit {
       this.subtaskList.splice(index, 1);
 
       this.announcer.announce(`Removed ${subtask.name}`);
+      this.updateSubtasksFormArray(); // Update the form array after removing a subtask
     }
   }
 

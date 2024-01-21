@@ -105,20 +105,20 @@
         <mat-form-field class="example-chip-list" class="mr-16" appearance="outline">
           <mat-label>Add a subtask</mat-label>
           <mat-chip-grid #chipGrid aria-label="Enter subtask">
-            <mat-chip-row *ngFor="let subtask of subtaskList; let i = index" (removed)="remove(subtask)">
-              {{ subtask.name }}
-              <button matChipRemove [attr.aria-label]="'remove ' + subtask.name">
-                <mat-icon>cancel</mat-icon>
-              </button>
-            </mat-chip-row>
-            <input
-              placeholder="New subtask..."
-              [matChipInputFor]="chipGrid"
-              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-              [matChipInputAddOnBlur]="addOnBlur"
-              (matChipInputTokenEnd)="add($event)"
-              formArrayName="subtasks"
-            />
+            @for (subtask of subtaskList; track subtask) {
+              <mat-chip-row (removed)="remove(subtask)">
+                {{subtask.name}}
+                <button matChipRemove [attr.aria-label]="'remove ' + subtask.name">
+                  <mat-icon>cancel</mat-icon>
+                </button>
+              </mat-chip-row>
+            }
+            <input placeholder="New subtask..."
+                  [matChipInputFor]="chipGrid"
+                  [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                  [matChipInputAddOnBlur]="addOnBlur"
+                  (matChipInputTokenEnd)="add($event)"
+                  formArrayName="subtasks"/>
           </mat-chip-grid>
           <mat-icon matSuffix>add</mat-icon>
         </mat-form-field>
