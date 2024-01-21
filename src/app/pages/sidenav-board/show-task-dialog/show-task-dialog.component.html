@@ -18,9 +18,12 @@
   <p>
     Assigned to: {{ data.task.assignments }}
   </p>
-  <div class="edit-icon" (click)="onTaskEdit()">
-    <button mat-mini-fab>
-      <mat-icon>edit</mat-icon>
+  <div class="btn-container" mat-dialog-actions>
+    <button mat-raised-button (click)="dialogRef.close()">
+      Close
+    </button>
+    <button mat-raised-button (click)="onTaskEdit()">
+      Edit
     </button>
   </div>
 </mat-card>

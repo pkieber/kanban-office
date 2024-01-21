@@ -96,9 +96,11 @@ app-new-task {
 
 
 mat-card {
+  width: 270px;
+  height: 100%;
   padding-top: 8px;
   padding-bottom: 8px;
-  background-color: rgba(6, 6, 50, 0.035);
+  background-color: rgba(6, 6, 50, 0.052)!important;
   border-radius: 10px !important;
   border: none !important;
   box-shadow: none !important;

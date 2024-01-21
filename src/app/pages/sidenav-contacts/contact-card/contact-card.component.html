@@ -12,9 +12,18 @@
     Contact information
     <button mat-raised-button (click)="onEdit()">Edit Contact</button>
   </h4>
-  <div>Email: {{ selectedContact.email || "n/a" }}</div>
-  <div>Phone: {{ selectedContact.phone || "n/a" }}</div>
-  <div>Team: {{ selectedContact.team || "n/a" }}</div>
+  <div class="contact-infotext">
+    <h5>Email:</h5>
+    <span>{{ selectedContact.email || "n/a" }}</span>
+  </div>
+  <div class="contact-infotext">
+    <h5>Phone:</h5>
+    <span>{{ selectedContact.phone || "n/a" }}</span>
+  </div>
+  <div class="contact-infotext">
+    <h5>Team:</h5>
+    <span>{{ selectedContact.team || "n/a" }}</span>
+  </div>
 </div>
 
 

@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Inject, Input, Output } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { TaskClass } from 'src/app/models/task.class';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { TasksService } from 'src/app/services/tasks.service';
+import { EditTaskDialogComponent } from '../edit-task-dialog/edit-task-dialog.component';
 
 @Component({
   selector: 'app-show-task-dialog',
@@ -21,6 +22,7 @@ export class ShowTaskDialogComponent {
     public dialogRef: MatDialogRef<ShowTaskDialogComponent>,
     private fb: FormBuilder,
     private taskService: TasksService,
+    private dialog: MatDialog,
   ) {
     // Initialize taskForm with empty values
     this.taskForm = fb.group({
@@ -34,6 +36,7 @@ export class ShowTaskDialogComponent {
       status: new FormControl('todo'),
     });
   }
+
 
   // Initialize the form when the component receives new task data
   ngOnChanges() {
@@ -51,12 +54,22 @@ export class ShowTaskDialogComponent {
     }
   }
 
+
   onTaskEdit() {
+    // Close the current dialog
     this.dialogRef.close();
-    if (this.task) {
-      // Emit the edited task with the updated form values
-      this.edit.emit({ ...this.task, ...this.taskForm.value });
-    }
+
+    // Open the new dialog
+    const dialogRef = this.dialog.open(EditTaskDialogComponent, {
+      data: { task: this.data.task }
+    });
+
+    /*
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Edit Task Dialog closed with result:', result);
+    });
+    */
   }
+
 }
 

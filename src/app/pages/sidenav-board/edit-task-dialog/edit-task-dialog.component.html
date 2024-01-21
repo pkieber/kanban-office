@@ -133,8 +133,8 @@
       </div>
       <!-- End of inputs-->
       <div class="btn-container" mat-dialog-actions>
-        <!--<button [disabled]="loading" mat-button (click)="dialogRef.close()">Cancel</button>-->
-        <button mat-raised-button (click)="resetForm()" cdkFocusInitial>Clear</button>
+        <button mat-raised-button (click)="dialogRef.close()">Cancel</button>
+        <!--<button mat-raised-button (click)="resetForm()" cdkFocusInitial>Clear</button>-->
         <button mat-raised-button [disabled]="!taskForm.valid" (click)="onSubmit()" cdkFocusInitial>Save</button>
       </div>
     </div>
