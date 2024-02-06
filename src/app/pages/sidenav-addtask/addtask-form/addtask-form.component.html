@@ -106,8 +106,8 @@
           <mat-chip-grid #chipGrid aria-label="Enter subtask">
             @for (subtask of subtaskList; track subtask) {
               <mat-chip-row (removed)="remove(subtask)">
-                {{subtask.name}}
-                <button matChipRemove [attr.aria-label]="'remove ' + subtask.name">
+                {{subtask}}
+                <button matChipRemove [attr.aria-label]="'remove ' + subtask">
                   <mat-icon>cancel</mat-icon>
                 </button>
               </mat-chip-row>

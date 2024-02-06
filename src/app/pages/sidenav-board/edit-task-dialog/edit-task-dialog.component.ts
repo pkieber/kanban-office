@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, inject, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { TaskClass } from 'src/app/models/task.class';
 import { TasksService } from 'src/app/services/tasks.service';
@@ -6,13 +6,8 @@ import { ContactsService } from 'src/app/services/contacts.service';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { inject } from '@angular/core';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
-
-export interface SubtaskClass {
-  name: string;
-}
 
 @Component({
   selector: 'app-edit-task-dialog',
@@ -29,12 +24,11 @@ export class EditTaskDialogComponent implements OnInit {
   minDate!: Date;
   maxDate!: Date;
   // Assignments
-  // assignmentList: string[] = ['Person1', 'Person2', 'Person3', 'Person4', 'Person5', 'Person6'];
   assignmentList: string[] = [];
   // Subtasks
   addOnBlur = true;
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
-  subtaskList: SubtaskClass[] = [];
+  subtaskList: string[] = [];
   announcer = inject(LiveAnnouncer);
 
   constructor(
@@ -72,8 +66,6 @@ export class EditTaskDialogComponent implements OnInit {
     this.updateSubtasksFormArray();
   }
 
-
-
   loadAssignments() {
     this.contactService.getAll().subscribe(
       contacts => {
@@ -85,7 +77,6 @@ export class EditTaskDialogComponent implements OnInit {
       }
     );
   }
-
 
   ngOnInit() {
     this.updateSubtasksFormArray();
@@ -108,7 +99,7 @@ export class EditTaskDialogComponent implements OnInit {
           dueDate: this.taskForm.value.dueDate instanceof Date ? this.taskForm.value.dueDate : null,
         };
 
-        this.updateSubtasksFormArray(); // Ensure subtasks are updated before updating the task
+        this.updateSubtasksFormArray();
 
         await this.taskService.update(updatedTask);
         this.showSnackbar('Task updated successfully', 'success-snackbar');
@@ -150,30 +141,30 @@ export class EditTaskDialogComponent implements OnInit {
 
     // Add subtask
     if (value) {
-      this.subtaskList.push({ name: value });
+      this.subtaskList.push(value);
     }
 
     // Clear the input value
     event.chipInput!.clear();
   }
 
-  remove(subtask: SubtaskClass): void {
+  remove(subtask: string): void {
     const index = this.subtaskList.indexOf(subtask);
 
     if (index >= 0) {
       this.subtaskList.splice(index, 1);
 
-      this.announcer.announce(`Removed ${subtask.name}`);
+      this.announcer.announce(`Removed ${subtask}`);
     }
   }
 
   updateSubtasksFormArray(): void {
     const subtasksArray = this.taskForm.get('subtasks') as FormArray;
-    subtasksArray.clear(); // Clear the existing form array
+    subtasksArray.clear();
 
     // Add each subtask from subtaskList to the form array
     this.subtaskList.forEach((subtask) => {
-      subtasksArray.push(new FormControl(subtask.name));
+      subtasksArray.push(new FormControl(subtask));
     });
   }
 

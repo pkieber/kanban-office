@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { TasksService } from 'src/app/services/tasks.service';
 import { ContactsService } from 'src/app/services/contacts.service';
+import { TaskClass } from 'src/app/models/task.class';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { COMMA, ENTER} from '@angular/cdk/keycodes';
@@ -8,10 +9,6 @@ import { inject } from '@angular/core';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 
-
-export interface SubtaskClass {
-  name: string;
-}
 
 @Component({
   selector: 'app-addtask-form',
@@ -30,7 +27,7 @@ export class AddtaskFormComponent {
   // Subtasks
   addOnBlur = true;
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
-  subtaskList: SubtaskClass[] = [];
+  subtaskList: string[] = [];
   announcer = inject(LiveAnnouncer);
 
 
@@ -128,7 +125,7 @@ export class AddtaskFormComponent {
 
     // Add subtask
     if (value) {
-      this.subtaskList.push({name: value});
+      this.subtaskList.push(value);
     }
 
     // Clear the input value
@@ -136,13 +133,13 @@ export class AddtaskFormComponent {
   }
 
 
-  remove(subtask: SubtaskClass): void {
+  remove(subtask: string): void {
     const index = this.subtaskList.indexOf(subtask);
 
     if (index >= 0) {
       this.subtaskList.splice(index, 1);
 
-      this.announcer.announce(`Removed ${subtask.name}`);
+      this.announcer.announce(`Removed ${subtask}`);
     }
   }
 
@@ -153,7 +150,7 @@ export class AddtaskFormComponent {
 
     // Add each subtask from subtaskList to the form array
     this.subtaskList.forEach(subtask => {
-      subtasksArray.push(new FormControl(subtask.name));
+      subtasksArray.push(new FormControl(subtask));
     });
   }
 
