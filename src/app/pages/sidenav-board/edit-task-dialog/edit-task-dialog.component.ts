@@ -1,4 +1,4 @@
-import { Component, inject, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { TaskClass } from 'src/app/models/task.class';
 import { TasksService } from 'src/app/services/tasks.service';
@@ -29,14 +29,14 @@ export class EditTaskDialogComponent implements OnInit {
   addOnBlur = true;
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
   subtaskList: string[] = [];
-  announcer = inject(LiveAnnouncer);
 
   constructor(
     public dialogRef: MatDialogRef<EditTaskDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: TaskDialogData,
     private taskService: TasksService,
     private contactService: ContactsService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private liveAnnouncer: LiveAnnouncer
   ) {
     this.loadAssignments();
     // Form group
@@ -68,10 +68,10 @@ export class EditTaskDialogComponent implements OnInit {
 
   loadAssignments() {
     this.contactService.getAll().subscribe(
-      contacts => {
-        this.assignmentList = contacts.map(contact => contact.firstName + ' ' + contact.lastName);
+      (contacts) => {
+        this.assignmentList = contacts.map((contact) => contact.firstName + ' ' + contact.lastName);
       },
-      error => {
+      (error) => {
         console.error('Error loading assignments:', error);
         this.showSnackbar('Failed to load assignments', 'error-snackbar');
       }
@@ -136,37 +136,93 @@ export class EditTaskDialogComponent implements OnInit {
   }
 
   // Subtasks
-  add(event: MatChipInputEvent): void {
+  async add(event: MatChipInputEvent): Promise<void> {
     const value = (event.value || '').trim();
 
-    // Add subtask
     if (value) {
+      // Add subtask to the local array
       this.subtaskList.push(value);
-    }
 
-    // Clear the input value
-    event.chipInput!.clear();
+      // Update the subtasks array in the taskForm
+      const subtasksArray = this.taskForm.get('subtasks') as FormArray;
+      subtasksArray.push(new FormControl(value));
+
+      // Clear the input value
+      event.chipInput!.clear();
+
+      // Update the task document in Firestore with the modified subtasks array
+      const updatedTask: TaskClass = {
+        ...this.data.task,
+        ...this.taskForm.value,
+        title: this.taskForm.value.title!, // Using non-null assertion operator
+        description: this.taskForm.value.description!, // Using non-null assertion operator
+        category: this.taskForm.value.category!, // Using non-null assertion operator
+        dueDate: this.taskForm.value.dueDate instanceof Date ? this.taskForm.value.dueDate : null,
+        assignments: this.taskForm.value.assignments!,
+        priority: this.taskForm.value.priority!,
+        subtasks: this.subtaskList,
+        status: this.taskForm.value.status!,
+      };
+
+      try {
+        await this.taskService.update(updatedTask);
+        this.showSnackbar('Subtask added successfully', 'success-snackbar');
+      } catch (error) {
+        console.error('Error adding subtask:', error);
+        this.showSnackbar('Failed to add subtask', 'error-snackbar');
+      }
+    }
   }
 
-  remove(subtask: string): void {
+
+  async remove(subtask: string): Promise<void> {
     const index = this.subtaskList.indexOf(subtask);
 
     if (index >= 0) {
       this.subtaskList.splice(index, 1);
 
-      this.announcer.announce(`Removed ${subtask}`);
+      // Announce removal
+      this.liveAnnouncer.announce(`Removed ${subtask}`);
+
+      // Update the subtasks array in the taskForm
+      const subtasksArray = this.taskForm.get('subtasks') as FormArray;
+      subtasksArray.removeAt(index); // Remove the FormControl at the corresponding index
+
+      // Update the task document in Firestore with the modified subtasks array
+      const updatedTask: TaskClass = {
+        ...this.data.task,
+        title: this.taskForm.value.title || '',
+        description: this.taskForm.value.description || '',
+        category: this.taskForm.value.category || '',
+        dueDate: this.taskForm.value.dueDate instanceof Date ? this.taskForm.value.dueDate : null,
+        assignments: this.taskForm.value.assignments || '',
+        priority: this.taskForm.value.priority || '',
+        subtasks: this.subtaskList,
+        status: this.taskForm.value.status || '',
+      };
+
+      try {
+        await this.taskService.update(updatedTask);
+        this.showSnackbar('Subtask removed successfully', 'success-snackbar');
+      } catch (error) {
+        console.error('Error removing subtask:', error);
+        this.showSnackbar('Failed to remove subtask', 'error-snackbar');
+      }
     }
   }
+
 
   updateSubtasksFormArray(): void {
     const subtasksArray = this.taskForm.get('subtasks') as FormArray;
     subtasksArray.clear();
 
-    // Add each subtask from subtaskList to the form array
     this.subtaskList.forEach((subtask) => {
       subtasksArray.push(new FormControl(subtask));
     });
+
+    this.taskForm.patchValue({ subtasks: this.subtaskList });
   }
+
 
   cancel(): void {
     this.data.task.title = this.backupTask.title;
