@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TasksService } from 'src/app/services/tasks.service';
+import { ContactsService } from 'src/app/services/contacts.service';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { COMMA, ENTER} from '@angular/cdk/keycodes';
@@ -24,7 +25,8 @@ export class AddtaskFormComponent {
   minDate: Date;
   maxDate: Date;
   // Assignments
-  assignmentList: string[] = ['Person1', 'Person2', 'Person3', 'Person4', 'Person5', 'Person6'];
+  //assignmentList: string[] = ['Person1', 'Person2', 'Person3', 'Person4', 'Person5', 'Person6'];
+  assignmentList: string[] = [];
   // Subtasks
   addOnBlur = true;
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
@@ -34,8 +36,10 @@ export class AddtaskFormComponent {
 
   constructor(
     private taskService: TasksService,
+    private contactService: ContactsService,
     private snackBar: MatSnackBar,
   ) {
+    this.loadAssignments();
     // Form group
     this.taskForm = new FormGroup( {
       title: new FormControl('', Validators.required),
@@ -51,6 +55,18 @@ export class AddtaskFormComponent {
     const currentYear = new Date().getFullYear();
     this.minDate = new Date();
     this.maxDate = new Date(currentYear + 1, 11, 31);
+  }
+
+  loadAssignments() {
+    this.contactService.getAll().subscribe(
+      contacts => {
+        this.assignmentList = contacts.map(contact => contact.firstName + ' ' + contact.lastName);
+      },
+      error => {
+        console.error('Error loading assignments:', error);
+        this.showSnackbar('Failed to load assignments', 'error-snackbar');
+      }
+    );
   }
 
 
