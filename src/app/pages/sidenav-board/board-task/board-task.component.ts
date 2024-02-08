@@ -17,13 +17,19 @@ export class BoardTaskComponent {
 
   onClickShow(): void {
     if (this.task) {
-      // console.log('Task data before opening dialog:', this.task);
       const dialogRef = this.dialog.open(ShowTaskDialogComponent, {
         data: { task: this.task },
       });
     }
   }
 
+  getInitials(assignment: string): string {
+    if (!assignment) return '';
+
+    const names = assignment.split(' ');
+    if (names.length === 0) return '';
+    return names.map(name => name.charAt(0)).join('');
+  }
 
   /*
   onEditClick() {

@@ -1,24 +1,39 @@
 <!-- Show task content -->
 <mat-card class="item" *ngIf="task">
-  <h4>Title: {{ task.title }}</h4>
-  <p>
-    Description: {{ task.description }}
-  </p>
-  <p>
-    Category: {{ task.category }}
-  </p>
-  <p>
-    Priority: {{ task.priority }}
-  </p>
-  <p>
-    Subtasks: {{ task.subtasks }}
-  </p>
-  <p
-    *ngIf="task.dueDate">Due Date: {{ task.dueDate.toDate() | date:'yyyy-MM-dd' }}
-  </p>
-  <p>
-    Assigned to: {{ task.assignments }}
-  </p>
+  <div (click)="onClickShow()">
+    <div class="category-container">
+      <div class="category">
+        {{ task.category }}
+      </div>
+      <div class="prio">
+        <mat-icon *ngIf="task.priority === 'urgent'" class="urgent">keyboard_double_arrow_up</mat-icon>
+        <mat-icon *ngIf="task.priority === 'medium'" class="medium">keyboard_double_arrow_up</mat-icon>
+        <mat-icon *ngIf="task.priority === 'low'" class="low">keyboard_double_arrow_down</mat-icon>
+      </div>
+    </div>
+    <h4>{{ task.title }}</h4>
+    <div class="task-content-container">
+      <p>
+        {{ task.description }}
+      </p>
+      <div class="subtask-container" [ngStyle]="{ 'display': (task.subtasks && task.subtasks.length > 0) ? 'block' : 'none' }">
+        {{ task.subtasks ? task.subtasks.length : 0 }} subtasks (> details).
+      </div>
+      <!--
+      <p
+        *ngIf="task.dueDate">Due Date: {{ task.dueDate.toDate() | date:'yyyy-MM-dd' }}
+      </p>
+      -->
+      <div *ngIf="task && task.assignments" id="assignment">
+        <b>Assigned to: </b>
+          <div class="initials-container">
+            <div *ngFor="let assignment of task.assignments" class="initials">
+              {{ getInitials(assignment) }}
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
   <div class="btn-container">
     <div class="edit-icon">
       <button mat-mini-fab (click)="onClickShow()">

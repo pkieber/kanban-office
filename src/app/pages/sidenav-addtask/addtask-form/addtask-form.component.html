@@ -93,9 +93,15 @@
       <div class="field-container">
         <mat-card-title>Priority</mat-card-title>
         <mat-button-toggle-group name="priority" aria-label="Priority" formControlName="priority">
-          <mat-button-toggle value="urgent" class="urgent-prio">Urgent</mat-button-toggle>
-          <mat-button-toggle value="medium" class="medium-prio">Medium</mat-button-toggle>
-          <mat-button-toggle value="low" class="low-prio">Low</mat-button-toggle>
+          <mat-button-toggle value="urgent" class="prio urgent-prio">
+            <div class="prio">Urgent</div>
+          </mat-button-toggle>
+          <mat-button-toggle value="medium" class="prio medium-prio">
+            <div class="prio">Medium</div>
+          </mat-button-toggle>
+          <mat-button-toggle value="low" class="prio low-prio">
+            <div class="prio">Low</div>
+          </mat-button-toggle>
         </mat-button-toggle-group>
       </div>
       <!-- Add subtasks -->
