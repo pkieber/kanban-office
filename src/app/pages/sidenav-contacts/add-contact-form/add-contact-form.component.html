@@ -12,10 +12,10 @@
           class="form-control"
         />
         <mat-icon matSuffix>verified_user</mat-icon>
+        <mat-error *ngIf="userForm.get('firstName')?.invalid && userForm.get('firstName')?.touched" class="error-message">
+          First name is required
+        </mat-error>
       </mat-form-field>
-      <mat-error *ngIf="userForm.get('firstName')?.invalid && userForm.get('firstName')?.touched" class="error-message">
-        First name is required
-      </mat-error>
     </div>
     <div class="field-container">
       <mat-form-field class="mr-16" appearance="outline">
@@ -29,10 +29,10 @@
           class="form-control"
         />
         <mat-icon matSuffix>verified_user</mat-icon>
+        <mat-error *ngIf="userForm.controls['lastName'].invalid && userForm.controls['lastName'].touched">
+          Last name is required
+        </mat-error>
       </mat-form-field>
-      <mat-error *ngIf="userForm.controls['lastName'].invalid && userForm.controls['lastName'].touched">
-        Last name is required
-      </mat-error>
     </div>
 
     <div class="field-container">
@@ -47,10 +47,10 @@
           class="form-control"
         />
         <mat-icon matSuffix>mail</mat-icon>
+        <mat-error *ngIf="userForm.controls['email'].invalid && userForm.controls['email'].touched">
+          Email is required
+        </mat-error>
       </mat-form-field>
-      <mat-error *ngIf="userForm.controls['email'].invalid && userForm.controls['email'].touched">
-        Email is required
-      </mat-error>
     </div>
 
     <div class="field-container">
@@ -65,10 +65,10 @@
           class="form-control"
         />
         <mat-icon matSuffix>call</mat-icon>
+        <mat-error *ngIf="userForm.controls['phone'].invalid && userForm.controls['phone'].touched">
+          Phone is required
+        </mat-error>
       </mat-form-field>
-      <mat-error *ngIf="userForm.controls['phone'].invalid && userForm.controls['phone'].touched">
-        Phone is required
-      </mat-error>
     </div>
 
     <div class="field-container">
@@ -83,10 +83,10 @@
           class="form-control"
         />
         <mat-icon matSuffix>group</mat-icon>
+        <mat-error *ngIf="userForm.controls['team'].invalid && userForm.controls['team'].touched">
+          Team is required
+        </mat-error>
       </mat-form-field>
-      <mat-error *ngIf="userForm.controls['team'].invalid && userForm.controls['team'].touched">
-        Team is required
-      </mat-error>
     </div>
 
     <div class="field-container">

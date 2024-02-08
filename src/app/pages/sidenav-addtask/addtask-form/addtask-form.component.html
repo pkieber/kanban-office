@@ -16,10 +16,10 @@
             class="form-control"
           />
           <mat-icon matSuffix>edit</mat-icon>
+          <mat-error *ngIf="taskForm.get('title')?.invalid && taskForm.get('title')?.touched" class="error-message">
+            Title is required
+          </mat-error>
         </mat-form-field>
-        <mat-error *ngIf="taskForm.get('title')?.invalid && taskForm.get('title')?.touched" class="error-message">
-          Title is required
-        </mat-error>
       </div>
       <!-- Add description -->
       <div class="field-container">
@@ -35,10 +35,10 @@
             class="form-control"
           ></textarea>
           <mat-icon matSuffix>edit</mat-icon>
+          <mat-error *ngIf="taskForm.get('description')?.invalid && taskForm.get('description')?.touched" class="error-message">
+            Description is required
+          </mat-error>
         </mat-form-field>
-        <mat-error *ngIf="taskForm.get('description')?.invalid && taskForm.get('description')?.touched" class="error-message">
-          Description is required
-        </mat-error>
       </div>
       <!-- Select category -->
       <div class="field-container">
@@ -52,10 +52,10 @@
             <mat-option value="Sales">Sales</mat-option>
             <mat-option value="Production">Production</mat-option>
           </mat-select>
+          <mat-error *ngIf="taskForm.get('category')?.invalid && taskForm.get('category')?.touched" class="error-message">
+            Category is required
+          </mat-error>
         </mat-form-field>
-        <mat-error *ngIf="taskForm.get('category')?.invalid && taskForm.get('category')?.touched" class="error-message">
-          Category is required
-        </mat-error>
       </div>
       <!-- Select assignment -->
       <div class="field-container">
@@ -67,10 +67,10 @@
               {{ assignment }}
             </mat-option>
           </mat-select>
+          <mat-error *ngIf="taskForm.get('assignments')?.invalid && taskForm.get('assignments')?.touched" class="error-message">
+            Assignment is required
+          </mat-error>
         </mat-form-field>
-        <mat-error *ngIf="taskForm.get('assignments')?.invalid && taskForm.get('assignments')?.touched" class="error-message">
-          Assignment is required
-        </mat-error>
       </div>
     </div>
 
@@ -84,10 +84,10 @@
           <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" formControlName="dueDate">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="taskForm.get('dueDate')?.invalid && taskForm.get('dueDate')?.touched" class="error-message">
+            Deadline is required
+          </mat-error>
         </mat-form-field>
-        <mat-error *ngIf="taskForm.get('dueDate')?.invalid && taskForm.get('dueDate')?.touched" class="error-message">
-          Deadline is required
-        </mat-error>
       </div>
       <!-- Add priority -->
       <div class="field-container">
