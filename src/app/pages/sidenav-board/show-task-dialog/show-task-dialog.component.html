@@ -15,7 +15,6 @@
   </div>
   <div class="subtask-container" [ngStyle]="{ 'display': (data.task.subtasks && data.task.subtasks.length > 0) ? 'block' : 'none' }">
     <b>Subtasks: </b>
-    {{ data.task.subtasks ? data.task.subtasks.length : 0 }} subtasks.
     <ul>
       <li *ngFor="let subtask of data.task.subtasks">{{ subtask }}</li>
     </ul>
