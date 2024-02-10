@@ -53,8 +53,7 @@ li {
     background-color: var(--themeColor);
     color: #fff;
     font-weight: bold;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
-    border: 2px solid white;
+    box-shadow: var(--boxShadow);
   }
 
   .contacts-info {
