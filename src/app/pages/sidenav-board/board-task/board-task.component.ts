@@ -15,6 +15,7 @@ export class BoardTaskComponent {
 
   constructor(private dialog: MatDialog) {}
 
+
   onClickShow(): void {
     if (this.task) {
       const dialogRef = this.dialog.open(ShowTaskDialogComponent, {
@@ -22,6 +23,7 @@ export class BoardTaskComponent {
       });
     }
   }
+
 
   getInitials(assignment: string): string {
     if (!assignment) return '';
@@ -31,12 +33,6 @@ export class BoardTaskComponent {
     return names.map(name => name.charAt(0)).join('');
   }
 
-  /*
-  onEditClick() {
-    console.log('Edit clicked');
-    this.edit.emit();
-  }
-  */
 
   onEditTask(): void {
     const dialogRef = this.dialog.open(EditTaskDialogComponent, {

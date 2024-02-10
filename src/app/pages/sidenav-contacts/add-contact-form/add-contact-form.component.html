@@ -1,6 +1,7 @@
 <form [formGroup]="userForm">
   <div mat-dialog-content>
     <div class="field-container">
+      <mat-card-subtitle>First Name</mat-card-subtitle>
       <mat-form-field class="mr-16" appearance="outline">
         <mat-label>Add first name</mat-label>
         <input
@@ -13,11 +14,12 @@
         />
         <mat-icon matSuffix>verified_user</mat-icon>
         <mat-error *ngIf="userForm.get('firstName')?.invalid && userForm.get('firstName')?.touched" class="error-message">
-          First name is required
+          First name is <strong>required</strong>
         </mat-error>
       </mat-form-field>
     </div>
     <div class="field-container">
+      <mat-card-subtitle>Last Name</mat-card-subtitle>
       <mat-form-field class="mr-16" appearance="outline">
         <mat-label>Add last name</mat-label>
         <input
@@ -30,12 +32,13 @@
         />
         <mat-icon matSuffix>verified_user</mat-icon>
         <mat-error *ngIf="userForm.controls['lastName'].invalid && userForm.controls['lastName'].touched">
-          Last name is required
+          Last name is <strong>required</strong>
         </mat-error>
       </mat-form-field>
     </div>
 
     <div class="field-container">
+      <mat-card-subtitle>Email</mat-card-subtitle>
       <mat-form-field class="mr-16" appearance="outline">
         <mat-label>Add email</mat-label>
         <input
@@ -48,12 +51,13 @@
         />
         <mat-icon matSuffix>mail</mat-icon>
         <mat-error *ngIf="userForm.controls['email'].invalid && userForm.controls['email'].touched">
-          Email is required
+          Email is <strong>required</strong>
         </mat-error>
       </mat-form-field>
     </div>
 
     <div class="field-container">
+      <mat-card-subtitle>Phone</mat-card-subtitle>
       <mat-form-field class="mr-16" appearance="outline">
         <mat-label>Add phone n°</mat-label>
         <input
@@ -66,12 +70,13 @@
         />
         <mat-icon matSuffix>call</mat-icon>
         <mat-error *ngIf="userForm.controls['phone'].invalid && userForm.controls['phone'].touched">
-          Phone is required
+          Phone is <strong>required</strong>
         </mat-error>
       </mat-form-field>
     </div>
 
     <div class="field-container">
+      <mat-card-subtitle>Team</mat-card-subtitle>
       <mat-form-field class="mr-16" appearance="outline">
         <mat-label>Select a team</mat-label>
         <input
@@ -84,12 +89,13 @@
         />
         <mat-icon matSuffix>group</mat-icon>
         <mat-error *ngIf="userForm.controls['team'].invalid && userForm.controls['team'].touched">
-          Team is required
+          Team is <strong>required</strong>
         </mat-error>
       </mat-form-field>
     </div>
 
     <div class="field-container">
+      <mat-card-subtitle>Color</mat-card-subtitle>
       <mat-form-field class="mr-16" appearance="outline">
         <mat-label>Pick a color</mat-label>
         <input

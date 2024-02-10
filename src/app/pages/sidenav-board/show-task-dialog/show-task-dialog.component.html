@@ -9,24 +9,24 @@
       <mat-icon *ngIf="data.task.priority === 'low'" class="low">keyboard_double_arrow_down</mat-icon>
     </div>
   </div>
-  <h4>{{ data.task.title }}</h4>
-  <div class="description">
+  <mat-card-title>{{ data.task.title }}</mat-card-title>
+  <div class="description p-bottom p-top">
     {{ data.task.description }}
   </div>
   <div class="subtask-container" [ngStyle]="{ 'display': (data.task.subtasks && data.task.subtasks.length > 0) ? 'block' : 'none' }">
-    <b>Subtasks: </b>
+    <mat-card-subtitle>Subtasks: </mat-card-subtitle>
     <ul>
       <li *ngFor="let subtask of data.task.subtasks">{{ subtask }}</li>
     </ul>
   </div>
   <div>
-    <b>Due date: </b>
+    <mat-card-subtitle>Due date: </mat-card-subtitle>
     <ul>
       <li>{{ data.task.dueDate?.toDate() | date: 'yyyy-MM-dd' }}</li>
     </ul>
   </div>
   <div>
-    <b>Assigned to: </b>
+    <mat-card-subtitle>Assigned to: </mat-card-subtitle>
     <ul>
       <li *ngFor="let assignment of data.task.assignments">{{ assignment }}</li>
     </ul>

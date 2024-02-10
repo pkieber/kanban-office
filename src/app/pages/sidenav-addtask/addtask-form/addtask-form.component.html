@@ -4,7 +4,7 @@
     <div class="left-container">
       <!-- Add title -->
       <div class="field-container">
-        <mat-card-title>Title</mat-card-title>
+        <mat-card-subtitle>Title</mat-card-subtitle>
         <mat-form-field class="mr-16" appearance="outline">
           <mat-label>Add title</mat-label>
           <input
@@ -17,13 +17,13 @@
           />
           <mat-icon matSuffix>edit</mat-icon>
           <mat-error *ngIf="taskForm.get('title')?.invalid && taskForm.get('title')?.touched" class="error-message">
-            Title is required
+            Title is <strong>required</strong>
           </mat-error>
         </mat-form-field>
       </div>
       <!-- Add description -->
       <div class="field-container">
-        <mat-card-title>Description</mat-card-title>
+        <mat-card-subtitle>Description</mat-card-subtitle>
         <mat-form-field class="mr-16" appearance="outline">
           <mat-label>Add description</mat-label>
           <textarea
@@ -36,13 +36,13 @@
           ></textarea>
           <mat-icon matSuffix>edit</mat-icon>
           <mat-error *ngIf="taskForm.get('description')?.invalid && taskForm.get('description')?.touched" class="error-message">
-            Description is required
+            Description is <strong>required</strong>
           </mat-error>
         </mat-form-field>
       </div>
       <!-- Select category -->
       <div class="field-container">
-        <mat-card-title>Category</mat-card-title>
+        <mat-card-subtitle>Category</mat-card-subtitle>
         <mat-form-field class="mr-16" appearance="outline">
           <mat-label>Select category</mat-label>
           <mat-select [disabled]="loading" formControlName="category">
@@ -53,13 +53,13 @@
             <mat-option value="Production">Production</mat-option>
           </mat-select>
           <mat-error *ngIf="taskForm.get('category')?.invalid && taskForm.get('category')?.touched" class="error-message">
-            Category is required
+            Category is <strong>required</strong>
           </mat-error>
         </mat-form-field>
       </div>
       <!-- Select assignment -->
       <div class="field-container">
-        <mat-card-title>Assignment</mat-card-title>
+        <mat-card-subtitle>Assignment</mat-card-subtitle>
         <mat-form-field class="mr-16" appearance="outline">
           <mat-label>Assign task</mat-label>
           <mat-select [disabled]="loading" formControlName="assignments" multiple>
@@ -68,7 +68,7 @@
             </mat-option>
           </mat-select>
           <mat-error *ngIf="taskForm.get('assignments')?.invalid && taskForm.get('assignments')?.touched" class="error-message">
-            Assignment is required
+            Assignment is <strong>required</strong>
           </mat-error>
         </mat-form-field>
       </div>
@@ -78,20 +78,20 @@
     <div class="right-container">
       <!-- Select due date -->
       <div class="field-container">
-        <mat-card-title>Due date</mat-card-title>
+        <mat-card-subtitle>Due date</mat-card-subtitle>
         <mat-form-field class="example-full-width" appearance="outline">
           <mat-label>Define due date</mat-label>
           <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" formControlName="dueDate">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
           <mat-error *ngIf="taskForm.get('dueDate')?.invalid && taskForm.get('dueDate')?.touched" class="error-message">
-            Deadline is required
+            Deadline is <strong>required</strong>
           </mat-error>
         </mat-form-field>
       </div>
       <!-- Add priority -->
       <div class="field-container">
-        <mat-card-title>Priority</mat-card-title>
+        <mat-card-subtitle>Priority</mat-card-subtitle>
         <mat-button-toggle-group name="priority" aria-label="Priority" formControlName="priority">
           <mat-button-toggle value="urgent" class="prio urgent-prio">
             <div class="prio">Urgent</div>
@@ -106,7 +106,7 @@
       </div>
       <!-- Add subtasks -->
       <div class="field-container">
-        <mat-card-title>Subtask</mat-card-title>
+        <mat-card-subtitle>Subtask</mat-card-subtitle>
         <mat-form-field class="example-chip-list" class="mr-16" appearance="outline">
           <mat-label>Add a subtask</mat-label>
           <mat-chip-grid #chipGrid aria-label="Enter subtask">

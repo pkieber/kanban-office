@@ -11,7 +11,7 @@
       <div class="left-container">
         <!-- Add title -->
         <div class="field-container">
-          <mat-card-title>Title</mat-card-title>
+          <mat-card-subtitle>Title</mat-card-subtitle>
           <mat-form-field class="mr-16" appearance="outline">
             <mat-label>Add title</mat-label>
             <input
@@ -31,7 +31,7 @@
         </div>
         <!-- Add description -->
         <div class="field-container">
-          <mat-card-title>Description</mat-card-title>
+          <mat-card-subtitle>Description</mat-card-subtitle>
           <mat-form-field class="mr-16" appearance="outline">
             <mat-label>Add description</mat-label>
             <textarea
@@ -50,7 +50,7 @@
         </div>
         <!-- Select category -->
         <div class="field-container">
-          <mat-card-title>Category</mat-card-title>
+          <mat-card-subtitle>Category</mat-card-subtitle>
           <mat-form-field class="mr-16" appearance="outline">
             <mat-label>Select category</mat-label>
             <mat-select [disabled]="loading" formControlName="category">
@@ -67,7 +67,7 @@
         </div>
         <!-- Select assignment -->
         <div class="field-container">
-          <mat-card-title>Assignment</mat-card-title>
+          <mat-card-subtitle>Assignment</mat-card-subtitle>
           <mat-form-field class="mr-16" appearance="outline">
             <mat-label>Assign task</mat-label>
             <mat-select [disabled]="loading" formControlName="assignments" multiple>
@@ -86,7 +86,7 @@
       <div class="right-container">
         <!-- Select due date -->
         <div class="field-container">
-          <mat-card-title>Due date</mat-card-title>
+          <mat-card-subtitle>Due date</mat-card-subtitle>
           <mat-form-field class="example-full-width" appearance="outline">
             <mat-label>Define due date</mat-label>
             <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" formControlName="dueDate">
@@ -99,7 +99,7 @@
         </div>
         <!-- Add priority -->
         <div class="field-container">
-          <mat-card-title class="prio-container">Priority</mat-card-title>
+          <mat-card-subtitle class="prio-container">Priority</mat-card-subtitle>
           <mat-button-toggle-group name="priority" aria-label="Priority" formControlName="priority">
             <mat-button-toggle value="urgent" class="urgent-prio">Urgent</mat-button-toggle>
             <mat-button-toggle value="medium" class="medium-prio">Medium</mat-button-toggle>
@@ -108,7 +108,7 @@
         </div>
         <!-- Add subtasks -->
         <div class="field-container subtask-container">
-          <mat-card-title>Subtask</mat-card-title>
+          <mat-card-subtitle>Subtask</mat-card-subtitle>
           <mat-form-field class="example-chip-list" class="mr-16" appearance="outline">
             <mat-label>Add a subtask</mat-label>
             <mat-chip-grid #chipGrid aria-label="Enter subtask">

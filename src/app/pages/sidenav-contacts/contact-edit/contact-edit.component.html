@@ -8,6 +8,7 @@
   <mat-divider></mat-divider>
   <div mat-dialog-content>
     <div class="field-container">
+      <mat-card-subtitle>First Name</mat-card-subtitle>
       <mat-form-field class="mr-16" appearance="outline">
         <mat-label>Edit first name</mat-label>
         <input
@@ -22,10 +23,11 @@
         <mat-icon matSuffix>verified_user</mat-icon>
       </mat-form-field>
       <mat-error *ngIf="editContactForm.get('firstName')?.invalid && editContactForm.get('firstName')?.touched" class="error-message">
-        First name is required
+        First name is <strong>required</strong>
       </mat-error>
     </div>
     <div class="field-container">
+      <mat-card-subtitle>Last Name</mat-card-subtitle>
       <mat-form-field class="mr-16" appearance="outline">
         <mat-label>Edit last name</mat-label>
         <input
@@ -40,11 +42,12 @@
         <mat-icon matSuffix>verified_user</mat-icon>
       </mat-form-field>
       <mat-error *ngIf="editContactForm.controls['lastName'].invalid && editContactForm.controls['lastName'].touched">
-        Last name is required
+        Last name is <strong>required</strong>
       </mat-error>
     </div>
 
     <div class="field-container">
+      <mat-card-subtitle>Email</mat-card-subtitle>
       <mat-form-field class="mr-16" appearance="outline">
         <mat-label>Edit email</mat-label>
         <input
@@ -59,11 +62,12 @@
         <mat-icon matSuffix>mail</mat-icon>
       </mat-form-field>
       <mat-error *ngIf="editContactForm.controls['email'].invalid && editContactForm.controls['email'].touched">
-        Email is required
+        Email is <strong>required</strong>
       </mat-error>
     </div>
 
     <div class="field-container">
+      <mat-card-subtitle>Phone</mat-card-subtitle>
       <mat-form-field class="mr-16" appearance="outline">
         <mat-label>Edit phone n°</mat-label>
         <input
@@ -78,11 +82,12 @@
         <mat-icon matSuffix>call</mat-icon>
       </mat-form-field>
       <mat-error *ngIf="editContactForm.controls['phone'].invalid && editContactForm.controls['phone'].touched">
-        Phone is required
+        Phone is <strong>required</strong>
       </mat-error>
     </div>
 
     <div class="field-container">
+      <mat-card-subtitle>Team</mat-card-subtitle>
       <mat-form-field class="mr-16" appearance="outline">
         <mat-label>Edit team</mat-label>
         <input
@@ -97,11 +102,12 @@
         <mat-icon matSuffix>group</mat-icon>
       </mat-form-field>
       <mat-error *ngIf="editContactForm.controls['team'].invalid && editContactForm.controls['team'].touched">
-        Team is required
+        Team is <strong>required</strong>
       </mat-error>
     </div>
 
     <div class="field-container">
+      <mat-card-subtitle>Color</mat-card-subtitle>
       <mat-form-field class="mr-16" appearance="outline">
         <mat-label>Edit color</mat-label>
         <input
