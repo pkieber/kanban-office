@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 // Material components
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -66,6 +67,8 @@ import { BoardDialogComponent } from './pages/sidenav-board/board-dialog/board-d
 import { BaseContactFormComponent } from './shared/base-contact-form-component.component';
 import { BaseTaskFormComponent } from './shared/base-task-form-component.component';
 import { DialogConfirmationComponent } from './components/dialog-confirmation/dialog-confirmation.component';
+import { LoginComponent } from './pages/login/login.component';
+import { LayoutComponent } from './pages/layout/layout.component';
 
 
 @NgModule({
@@ -95,6 +98,8 @@ import { DialogConfirmationComponent } from './components/dialog-confirmation/di
     ContactEditComponent,
     BoardDialogComponent,
     DialogConfirmationComponent,
+    LoginComponent,
+    LayoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -131,6 +136,7 @@ import { DialogConfirmationComponent } from './components/dialog-confirmation/di
     MatSlideToggleModule,
     // Drag-and-drop implementation
     DragDropModule,
+    HttpClientModule, 
   ],
   providers: [],
   bootstrap: [AppComponent]

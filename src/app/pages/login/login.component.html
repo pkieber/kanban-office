@@ -1,0 +1,29 @@
+	<div class="body">
+    <div class="main">
+		<input type="checkbox" id="chk" aria-hidden="true">
+		<!-- ERROR MESSAGE -->
+		@if (errorMessage) {
+			<div>{{ errorMessage }}</div>
+		}
+		<!-- REGISTER FORM -->
+		<div class="signup">
+			<form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+				<label for="chk" aria-hidden="true">Register</label>
+				<input type="text"  placeholder="Name" formControlName="username">
+				<input type="email" name="email" placeholder="Email" formControlName="email" >
+				<input type="password" placeholder="Password" formControlName="password" />
+				<button type="submit">Sign Up</button>
+			</form>
+		</div>
+
+		<!-- LOGIN FORM -->
+		<div class="login">
+			<form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+				<label for="chk" aria-hidden="true">Login</label>
+				<input type="email" placeholder="Email" formControlName="email" >
+				<input type="password" placeholder="Password" formControlName="password" />
+				<button type="submit">Sign In</button>
+			</form>
+		</div>
+	</div>
+</div>
