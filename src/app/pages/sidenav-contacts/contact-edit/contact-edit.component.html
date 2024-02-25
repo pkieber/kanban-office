@@ -125,8 +125,9 @@
   </div>
 
   <div class="btn-container" mat-dialog-actions>
-    <button mat-raised-button [disabled]="loading" mat-button (click)="dialogRef.close()">Cancel</button>
+    <button mat-raised-button [disabled]="loading" mat-button color="warn" (click)="onDeleteContact()">Delete</button>
     <button mat-raised-button [disabled]="!editContactForm.valid" mat-button (click)="onSave()" cdkFocusInitial>Save</button>
+    <button mat-raised-button [disabled]="loading" mat-button (click)="dialogRef.close()">Cancel</button>
   </div>
 </form>
 </mat-card>

@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-// Material components
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -29,27 +28,21 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatListModule } from '@angular/material/list';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
-// Drag-and-drop implementation
 import { DragDropModule } from '@angular/cdk/drag-drop';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-// Firebase components
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
-import { MainComponent } from './layout/main/main.component';
 import { HelpComponent } from './components/help/help.component';
 import { ImprintComponent } from './components/imprint/imprint.component';
-import { ProfileComponent } from './components/profile/profile.component';
 import { SidenavSummaryComponent } from './pages/sidenav-summary/sidenav-summary.component';
 import { SidenavBoardComponent } from './pages/sidenav-board/sidenav-board.component';
 import { SidenavAddtaskComponent } from './pages/sidenav-addtask/sidenav-addtask.component';
 import { SidenavContactsComponent } from './pages/sidenav-contacts/sidenav-contacts.component';
-import { SidenavLegalComponent } from './pages/sidenav-legal/sidenav-legal.component';
 import { EditTaskDialogComponent } from './pages/sidenav-board/edit-task-dialog/edit-task-dialog.component';
 import { BoardTaskComponent } from './pages/sidenav-board/board-task/board-task.component';
 import { ContactListComponent } from './pages/sidenav-contacts/contact-list/contact-list.component';
@@ -64,8 +57,6 @@ import { AddtaskFormComponent } from './pages/sidenav-addtask/addtask-form/addta
 import { AddContactFormComponent } from './pages/sidenav-contacts/add-contact-form/add-contact-form.component';
 import { ContactEditComponent } from './pages/sidenav-contacts/contact-edit/contact-edit.component';
 import { BoardDialogComponent } from './pages/sidenav-board/board-dialog/board-dialog.component';
-import { BaseContactFormComponent } from './shared/base-contact-form-component.component';
-import { BaseTaskFormComponent } from './shared/base-task-form-component.component';
 import { DialogConfirmationComponent } from './components/dialog-confirmation/dialog-confirmation.component';
 import { LoginComponent } from './pages/login/login.component';
 import { LayoutComponent } from './pages/layout/layout.component';
@@ -74,15 +65,12 @@ import { LayoutComponent } from './pages/layout/layout.component';
 @NgModule({
   declarations: [
     AppComponent,
-    MainComponent,
     HelpComponent,
     ImprintComponent,
-    ProfileComponent,
     SidenavSummaryComponent,
     SidenavBoardComponent,
     SidenavAddtaskComponent,
     SidenavContactsComponent,
-    SidenavLegalComponent,
     EditTaskDialogComponent,
     BoardTaskComponent,
     ContactListComponent,
@@ -105,11 +93,9 @@ import { LayoutComponent } from './pages/layout/layout.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    // Firebase components
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
-    // Material components
     MatSidenavModule,
     MatIconModule,
     MatButtonModule,
@@ -134,9 +120,8 @@ import { LayoutComponent } from './pages/layout/layout.component';
     MatChipsModule,
     MatListModule,
     MatSlideToggleModule,
-    // Drag-and-drop implementation
     DragDropModule,
-    HttpClientModule, 
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

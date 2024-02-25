@@ -8,6 +8,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogDeleteConfirmComponent } from 'src/app/components/dialog-delete-confirm/dialog-delete-confirm.component';
 
 @Component({
   selector: 'app-edit-task-dialog',
@@ -36,8 +38,9 @@ export class EditTaskDialogComponent implements OnInit {
     private taskService: TasksService,
     private contactService: ContactsService,
     private snackBar: MatSnackBar,
-    private liveAnnouncer: LiveAnnouncer
-  ) {
+    private liveAnnouncer: LiveAnnouncer,
+    private dialog: MatDialog,
+    ) {
     this.loadAssignments();
     // Form group
     this.taskForm = new FormGroup({
@@ -221,6 +224,25 @@ export class EditTaskDialogComponent implements OnInit {
     });
 
     this.taskForm.patchValue({ subtasks: this.subtaskList });
+  }
+
+
+  onDeleteTask(): void {
+    const dialogRef = this.dialog.open(DialogDeleteConfirmComponent);
+
+    dialogRef.afterClosed().subscribe((result: string | undefined) => {
+      if (result === 'confirm' && this.data.task.id) {
+        this.taskService.delete(this.data.task.id)
+          .then(() => {
+            this.showSnackbar('Task deleted successfully', 'success-snackbar');
+            this.dialogRef.close({ task: this.data.task, delete: true });
+          })
+          .catch(error => {
+            console.error('Error deleting task:', error);
+            this.showSnackbar('Failed to delete task', 'error-snackbar');
+          });
+      }
+    });
   }
 
 

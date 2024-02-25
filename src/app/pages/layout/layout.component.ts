@@ -2,7 +2,6 @@ import { Component, HostBinding, OnInit, computed, inject, signal } from '@angul
 import { FormControl } from '@angular/forms';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { MatDialog } from '@angular/material/dialog';
-import { ProfileComponent } from 'src/app/components/profile/profile.component';
 import { ImprintComponent } from 'src/app/components/imprint/imprint.component';
 import { HelpComponent } from 'src/app/components/help/help.component';
 import { AuthService } from 'src/app/services/auth.service';
@@ -63,13 +62,6 @@ export class LayoutComponent implements OnInit {
     this.authService.logout();
     //console.log('logout');
     this.router.navigateByUrl('/login');
-  }
-
-
-  openDialogProfile() {
-    const dialogRef = this.dialog.open(ProfileComponent);
-    dialogRef.afterClosed().subscribe(result => {
-    });
   }
 
 

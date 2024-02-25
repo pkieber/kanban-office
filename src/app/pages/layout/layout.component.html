@@ -6,26 +6,32 @@
       </button>
       <img class="profile-pic" src="/assets/img/logo.png" />
       <span class="example-spacer"></span>
-      <mat-slide-toggle [formControl]="switchTheme"><span>Dark Mode</span></mat-slide-toggle>
-      <button [matMenuTriggerFor]="menu" #menuTrigger matTooltip="Open menu" matTooltip="Logout" mat-icon-button class="example-icon">
-        <mat-icon>settings</mat-icon>
-      </button>
       <!-- Show user name -->
-      @if(authService.currentUserSig() == null) {
-        <div>
-          <a routerLink="/login">
-            <mat-icon class="mat-18">login</mat-icon>
-          </a>
-        </div>
-      }
-      @if(authService.currentUserSig()) {
-        <div>
-          {{authService.currentUserSig()?.username}}
-          <span (click)="onLogout()">
-            <mat-icon class="mat-18">logout</mat-icon>
-          </span>
-        </div>
-      }
+      <div class="login-name">
+        <!--
+        @if(authService.currentUserSig() == null) {
+          <div>
+            <a routerLink="/login">
+              <mat-icon class="mat-18">login</mat-icon>
+            </a>
+          </div>
+        }
+        -->
+        @if(authService.currentUserSig()) {
+          <div><span>Welcome </span>
+            {{authService.currentUserSig()?.username}}
+            <!--
+            <span (click)="onLogout()">
+              <mat-icon class="mat-18">logout</mat-icon>
+            </span>
+            -->
+          </div>
+        }
+        <mat-slide-toggle matTooltip="Darkmode on/off" [formControl]="switchTheme"></mat-slide-toggle>
+        <button [matMenuTriggerFor]="menu" #menuTrigger matTooltip="Open menu" matTooltip="Logout" mat-icon-button class="example-icon">
+          <mat-icon>logout</mat-icon>
+        </button>
+    </div>
     </mat-toolbar>
     <!-- Desktop sidenav -->
     <mat-sidenav-container>
@@ -43,8 +49,6 @@
   <!-- Settings -->
   <mat-menu #menu="matMenu">
     <button mat-menu-item (click)="onLogout()">Logout</button>
-    <button mat-menu-item (click)="openDialogProfile()">Profile</button>
     <button mat-menu-item (click)="openDialogLegal()">Legal</button>
     <button mat-menu-item (click)="openDialogHelp()">Help</button>
   </mat-menu>
-  

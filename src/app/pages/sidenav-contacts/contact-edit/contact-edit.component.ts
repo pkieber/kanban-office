@@ -4,7 +4,9 @@ import { ContactsService } from 'src/app/services/contacts.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { ContactClass } from 'src/app/models/contact.class';
+import { DialogDeleteConfirmComponent } from 'src/app/components/dialog-delete-confirm/dialog-delete-confirm.component';
 
 @Component({
   selector: 'app-contact-edit',
@@ -20,6 +22,7 @@ export class ContactEditComponent {
     private contactService: ContactsService,
     public dialogRef: MatDialogRef<ContactEditComponent>,
     private snackBar: MatSnackBar,
+    private dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data: any // Inject data from the parent component
   ) {
     this.editContactForm = new FormGroup({
@@ -58,6 +61,27 @@ export class ContactEditComponent {
   onCancel() {
     // Handle cancellation if needed
     this.dialogRef.close();
+  }
+
+  onDeleteContact() {
+    const dialogRef = this.dialog.open(DialogDeleteConfirmComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 'confirm') {
+        this.deleteContact();
+      }
+    });
+  }
+
+  async deleteContact() {
+    try {
+      await this.contactService.delete(this.data.contact.id);
+      this.showSnackbar('Contact deleted successfully', 'success-snackbar');
+      this.dialogRef.close();
+    } catch (error) {
+      console.error(error);
+      this.showSnackbar('Failed to delete contact', 'error-snackbar');
+    }
   }
 
   showSnackbar(message: string, panelClass: string = 'default-snackbar'): void {
