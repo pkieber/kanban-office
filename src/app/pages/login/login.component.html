@@ -1,30 +1,42 @@
-	<div class="body">
-    <div class="main">
-		<input type="checkbox" id="chk" aria-hidden="true">
-		<!-- ERROR MESSAGE -->
-		@if (errorMessage) {
-			<div>{{ errorMessage }}</div>
-		}
-		<!-- REGISTER FORM -->
-		<div class="signup">
-			<form [formGroup]="registerForm" (ngSubmit)="onRegister()">
-				<label for="chk" aria-hidden="true">Register</label>
-				<input type="text"  placeholder="Name" formControlName="username">
-				<input type="email" name="email" placeholder="Email" formControlName="email" >
-				<input type="password" placeholder="Password" formControlName="password" />
-				<button type="submit">Sign Up</button>
-			</form>
-		</div>
+<div class="body">
+  <div class="main">
+    <input type="checkbox" id="chk" aria-hidden="true">
+    <!-- ERROR MESSAGE -->
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
 
-		<!-- LOGIN FORM -->
-		<div class="login">
-			<form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-				<label for="chk" aria-hidden="true">Login</label>
-				<input type="email" placeholder="Email" formControlName="email" >
-				<input type="password" placeholder="Password" formControlName="password" />
-				<button type="submit">Sign In</button>
-			</form>
+    <!-- REGISTER FORM -->
+    <div class="signup">
+      <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+        <label for="chk" aria-hidden="true">Register</label>
+
+        <input type="text"  placeholder="Name" formControlName="username">
+        <div *ngIf="registerForm.get('username')?.errors?.['required'] && registerForm.get('username')?.touched" class="error-message">Username is required.</div>
+
+        <input type="email" name="email" placeholder="Email" formControlName="email">
+        <div *ngIf="registerForm.get('email')?.errors?.['required'] && registerForm.get('email')?.touched" class="error-message">Email is required.</div>
+        <div *ngIf="registerForm.get('email')?.errors?.['email'] && registerForm.get('email')?.touched" class="error-message">Invalid email format.</div>
+
+        <input type="password" placeholder="Password" formControlName="password" />
+        <div *ngIf="registerForm.get('password')?.errors?.['required'] && registerForm.get('password')?.touched" class="error-message">Password is required.</div>
+
+        <button type="submit">Sign Up</button>
+      </form>
+    </div>
+
+    <!-- LOGIN FORM -->
+    <div class="login">
+      <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+        <label for="chk" aria-hidden="true">Login</label>
+        <input type="email" placeholder="Email" formControlName="email" >
+        <div *ngIf="loginForm.get('email')?.errors?.['required'] && loginForm.get('email')?.touched" class="error-message">Email is required.</div>
+        <div *ngIf="loginForm.get('email')?.errors?.['email'] && loginForm.get('email')?.touched" class="error-message">Invalid email format.</div>
+
+        <input type="password" placeholder="Password" formControlName="password" />
+        <div *ngIf="loginForm.get('password')?.errors?.['required'] && loginForm.get('password')?.touched" class="error-message">Password is required.</div>
+
+        <button type="submit">Sign In</button>
+      </form>
       <button mat-raised-button (click)="onLoginAnon()">Guest login</button>
-		</div>
-	</div>
+    </div>
+  </div>
 </div>

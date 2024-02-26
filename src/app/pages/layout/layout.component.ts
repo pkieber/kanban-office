@@ -6,6 +6,7 @@ import { ImprintComponent } from 'src/app/components/imprint/imprint.component';
 import { HelpComponent } from 'src/app/components/help/help.component';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-layout',
@@ -15,6 +16,7 @@ import { Router } from '@angular/router';
 export class LayoutComponent implements OnInit {
   authService = inject(AuthService);
   router = inject(Router);
+  snackbar = inject(MatSnackBar);
 
   collapsed = signal(false);
 
@@ -59,6 +61,7 @@ export class LayoutComponent implements OnInit {
 
 
   onLogout(): void {
+    this.showSnackbar('User logout successfull', 'success-snackbar');
     this.authService.logout();
     //console.log('logout');
     this.router.navigateByUrl('/login');
@@ -75,6 +78,13 @@ export class LayoutComponent implements OnInit {
   openDialogHelp() {
     const dialogRef = this.dialog.open(HelpComponent);
     dialogRef.afterClosed().subscribe(result => {
+    });
+  }
+
+  showSnackbar(message: string, panelClass: string = 'default-snackbar'): void {
+    this.snackbar.open(message, 'OK', {
+      duration: 3000,
+      panelClass: [panelClass]
     });
   }
 

@@ -3,6 +3,8 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-login',
@@ -14,35 +16,38 @@ export class LoginComponent {
   http = inject(HttpClient);
   authService = inject(AuthService);
   router = inject(Router);
+  snackBar = inject(MatSnackBar);
 
-
-  loginForm = this.fb.nonNullable.group({
-    email: ['', Validators.required],
+  // Define your forms with validators
+  loginForm = this.fb.group({
+    email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required],
   });
 
-
-  registerForm = this.fb.nonNullable.group({
-    email: ['', Validators.required],
+  registerForm = this.fb.group({
+    email: ['', [Validators.required, Validators.email]],
     username: ['', Validators.required],
     password: ['', Validators.required],
-  })
+  });
 
   errorMessage: string | null = null;
 
 
   onLogin(): void {
     const rawForm = this.loginForm.getRawValue();
+    const email = rawForm.email || '';
+    const password = rawForm.password || '';
     this.authService
-      .login(rawForm.email, rawForm.password)
+      .login(email, password)
       .subscribe({
         next: () => {
+          this.showSnackbar('User login successfull', 'success-snackbar');
           this.router.navigateByUrl('/summary');
-      },
-      error: (err) => {
-        this.errorMessage = err.code;
-      }
-    });
+        },
+        error: (err) => {
+          this.errorMessage = err.code;
+        }
+      });
   }
 
 
@@ -51,26 +56,40 @@ export class LoginComponent {
       .anonLogin()
       .subscribe({
         next: () => {
+          this.showSnackbar('User login successfull', 'success-snackbar');
           this.router.navigateByUrl('/summary');
-      },
-      error: (err) => {
-        this.errorMessage = err.code;
-      }
-    });
+        },
+        error: (err) => {
+          this.errorMessage = err.code;
+        }
+      });
   }
 
 
   onRegister(): void {
     const rawForm = this.registerForm.getRawValue();
+    const email = rawForm.email || '';
+    const username = rawForm.username || '';
+    const password = rawForm.password || '';
     this.authService
-      .register(rawForm.email, rawForm.username, rawForm.password)
+      .register(email, username, password)
       .subscribe({
         next: () => {
+          this.showSnackbar('User registration successfull', 'success-snackbar');
           this.router.navigateByUrl('/');
-      },
-      error: (err) => {
-        this.errorMessage = err.code;
-      }
+          this.registerForm.reset();
+        },
+        error: (err) => {
+          this.errorMessage = err.code;
+        }
+      });
+  }
+
+
+  showSnackbar(message: string, panelClass: string = 'default-snackbar'): void {
+    this.snackBar.open(message, 'OK', {
+      duration: 3000,
+      panelClass: [panelClass]
     });
   }
 

@@ -100,5 +100,12 @@ button:hover {
 }
 
 form {
-    background-color: var(--themeColor);
+  background-color: var(--themeColor);
+}
+
+.error-message {
+  display: flex;
+  justify-content: center;
+  color: red;
+  font-size: 0.8rem;
 }
