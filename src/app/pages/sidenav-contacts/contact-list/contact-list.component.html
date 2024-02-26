@@ -9,7 +9,7 @@
         </ng-container>
         <li>
           <div class="contact-underline"></div>
-          <div class="contacts-box" (click)="showContactDetail(data)">
+          <div matTooltip="Show details" class="contacts-box" (click)="showContactDetail(data)">
             <div class="initials-circle" [style.background]="data.color">
               {{ data.lastName[0] }} {{ data.firstName[0] }}
             </div>

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskClass } from 'src/app/models/task.class';
-import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
-import { CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { TasksService } from 'src/app/services/tasks.service';
 import { BoardDialogComponent } from './board-dialog/board-dialog.component';
 import { TaskDialogResult } from './edit-task-dialog/edit-task-dialog.component';
@@ -32,7 +31,7 @@ export class SidenavBoardComponent implements OnInit {
 
   private loadTasks(): void {
     this.taskService.getAll().subscribe(tasks => {
-      console.log('Fetched tasks from Firestore:', tasks);
+      // console.log('Fetched tasks from Firestore:', tasks);
       // Clear existing tasks
       this.todo = [];
       this.inProgress = [];

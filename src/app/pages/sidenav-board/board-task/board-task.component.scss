@@ -90,6 +90,7 @@
   margin-top: 10px;
   gap: 5px;
 
+
   .initials {
     background-color: #80808042;
     padding: 10px;
@@ -100,6 +101,12 @@
     justify-content: center;
     align-items: center;
     box-shadow: var(--box-shadow);
+  }
+
+  .additional-assignments {
+    display: flex;
+    align-items: center;
+    font-size: 0.8rem;
   }
 }
 

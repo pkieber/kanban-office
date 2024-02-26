@@ -11,7 +11,6 @@
       <mat-icon>add</mat-icon>
     </button>
   </div>
-  <!-- (edit)="editTask('done', $event)" - kann man löschen -->
   <div class="content-wrapper">
     <div class="container-wrapper">
       <div class="container">
@@ -26,14 +25,12 @@
           class="list">
           <p class="empty-label" *ngIf="todo.length === 0">Empty list</p>
           <app-board-task
-            (edit)="editTask('todo', $event)"
             *ngFor="let task of todo"
             cdkDrag [task]="task"
           >
           </app-board-task>
         </mat-card>
       </div>
-  <!-- (edit)="editTask('done', $event)" - kann man löschen -->
   <div class="container">
         <h3>In progress</h3>
         <mat-card
@@ -46,14 +43,12 @@
           class="list">
           <p class="empty-label" *ngIf="inProgress.length === 0">Empty list</p>
           <app-board-task
-            (edit)="editTask('inProgress', $event)"
             *ngFor="let task of inProgress"
             cdkDrag [task]="task"
           >
           </app-board-task>
         </mat-card>
       </div>
-  <!-- (edit)="editTask('done', $event)" - kann man löschen -->
   <div class="container">
         <h3>Done</h3>
         <mat-card
@@ -66,7 +61,6 @@
           class="list">
           <p class="empty-label" *ngIf="done.length === 0">Empty list</p>
           <app-board-task
-            (edit)="editTask('done', $event)"
             *ngFor="let task of done"
             cdkDrag [task]="task"
           >

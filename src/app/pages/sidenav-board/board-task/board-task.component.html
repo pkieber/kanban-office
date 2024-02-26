@@ -6,9 +6,9 @@
         {{ task.category }}
       </div>
       <div class="prio">
-        <mat-icon *ngIf="task.priority === 'urgent'" class="urgent">keyboard_double_arrow_up</mat-icon>
-        <mat-icon *ngIf="task.priority === 'medium'" class="medium">keyboard_double_arrow_up</mat-icon>
-        <mat-icon *ngIf="task.priority === 'low'" class="low">keyboard_double_arrow_down</mat-icon>
+        <mat-icon matTooltip="High priority" *ngIf="task.priority === 'urgent'" class="urgent">keyboard_double_arrow_up</mat-icon>
+        <mat-icon matTooltip="Medium priority" *ngIf="task.priority === 'medium'" class="medium">density_medium</mat-icon>
+        <mat-icon matTooltip="Low priority" *ngIf="task.priority === 'low'" class="low">keyboard_double_arrow_down</mat-icon>
       </div>
     </div>
     <mat-card-title>{{ task.title }}</mat-card-title>
@@ -20,33 +20,26 @@
       <div class="subtask-container" [ngStyle]="{ 'display': (task.subtasks && task.subtasks.length > 0) ? 'block' : 'none' }">
         {{ task.subtasks ? task.subtasks.length : 0 }} subtasks (> details).
       </div>
-      <!--
-      <p
-        *ngIf="task.dueDate">Due Date: {{ task.dueDate.toDate() | date:'yyyy-MM-dd' }}
-      </p>
-      -->
       <div *ngIf="task && task.assignments" id="assignment">
         <mat-card-subtitle>Assigned to: </mat-card-subtitle>
-          <div class="initials-container">
-            <div *ngFor="let assignment of task.assignments" class="initials">
+        <div class="initials-container">
+          <ng-container *ngFor="let assignment of task.assignments.slice(0, 3); let i = index">
+            <div class="initials">
               {{ getInitials(assignment) }}
             </div>
+          </ng-container>
+          <div *ngIf="task.assignments.length > 3" class="additional-assignments">
+            + {{ task.assignments.length - 3 }} more
           </div>
+        </div>
       </div>
     </div>
   </div>
   <div class="icon-container">
     <div class="edit-icon">
-      <button mat-mini-fab (click)="onClickShow()">
+      <button matTooltip="Show details" mat-mini-fab (click)="onClickShow()">
         <mat-icon>open_in_new</mat-icon>
       </button>
     </div>
-    <!--
-    <div class="edit-icon">
-      <button mat-mini-fab (click)="onEditTask()">
-        <mat-icon>edit</mat-icon>
-      </button>
-    </div>
-    -->
   </div>
 </mat-card>
