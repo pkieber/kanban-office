@@ -19,7 +19,7 @@
         -->
         @if(authService.currentUserSig()) {
           <div><span>Welcome </span>
-            {{authService.currentUserSig()?.username}}
+            {{authService.currentUserSig()?.username || 'Guest'}}
             <!--
             <span (click)="onLogout()">
               <mat-icon class="mat-18">logout</mat-icon>

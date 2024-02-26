@@ -1,5 +1,5 @@
 import { Injectable, inject, signal } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile, user } from '@angular/fire/auth';
+import { Auth, createUserWithEmailAndPassword, signInAnonymously, signInWithEmailAndPassword, signOut, updateProfile, user } from '@angular/fire/auth';
 import { Observable, from } from 'rxjs';
 import { UserInterface } from '../models/user.interface';
 
@@ -13,6 +13,7 @@ export class AuthService {
   isLoggedIn: boolean = false; // Used for auth-guard
 
 
+  // Register with email/password/username
   register(email: string, username: string, password: string
   ): Observable<void> {
     const promise = createUserWithEmailAndPassword(
@@ -23,6 +24,7 @@ export class AuthService {
   }
 
 
+  // Login with email/password
   login(email: string, password: string): Observable<void> {
     const promise = signInWithEmailAndPassword(
       this.firebaseAuth, email, password
@@ -32,6 +34,17 @@ export class AuthService {
   }
 
 
+  // Login as anonymous user
+  anonLogin() {
+    const promise = signInAnonymously(
+      this.firebaseAuth
+    ).then(() => {});
+    this.isLoggedIn = true; // Used for auth-guard
+    return from(promise);
+  }
+
+
+  // Logout user
   logout(): Observable<void> {
     const promise = signOut(this.firebaseAuth);
     this.isLoggedIn = false; // Used for auth-guard

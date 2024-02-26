@@ -46,6 +46,20 @@ export class LoginComponent {
   }
 
 
+  onLoginAnon(): void {
+    this.authService
+      .anonLogin()
+      .subscribe({
+        next: () => {
+          this.router.navigateByUrl('/summary');
+      },
+      error: (err) => {
+        this.errorMessage = err.code;
+      }
+    });
+  }
+
+
   onRegister(): void {
     const rawForm = this.registerForm.getRawValue();
     this.authService
