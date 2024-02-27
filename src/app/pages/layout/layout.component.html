@@ -4,27 +4,13 @@
       <button class="btn-hide" mat-icon-button (click)="collapsed.set(!collapsed())">
         <mat-icon>menu</mat-icon>
       </button>
-      <img class="profile-pic" src="/assets/img/logo.png" />
+      <img class="profile-pic" src="assets/img/join.png" />
       <span class="example-spacer"></span>
       <!-- Show user name -->
       <div class="login-name">
-        <!--
-        @if(authService.currentUserSig() == null) {
-          <div>
-            <a routerLink="/login">
-              <mat-icon class="mat-18">login</mat-icon>
-            </a>
-          </div>
-        }
-        -->
         @if(authService.currentUserSig()) {
           <div><span>Welcome </span>
             {{authService.currentUserSig()?.username || 'Guest'}}
-            <!--
-            <span (click)="onLogout()">
-              <mat-icon class="mat-18">logout</mat-icon>
-            </span>
-            -->
           </div>
         }
         <mat-slide-toggle matTooltip="Darkmode on/off" [formControl]="switchTheme"></mat-slide-toggle>
